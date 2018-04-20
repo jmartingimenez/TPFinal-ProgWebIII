@@ -8,6 +8,6 @@ namespace TPFinalProgWebIII.Models {
         /*Si la carpeta Models esta vacia, no aparece en el repo.
          Puse esto nomas para que quede creada hasta que empecemos a 
          agregar cosas...*/
-        private string puteadaFavorita = "";
+        private string puteadaFavorita = "MMLPQTP";
     }
 }
