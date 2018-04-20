@@ -13,10 +13,25 @@ namespace TPFinalProgWebIII
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Ruta para tareas..
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                name: "Tareas",
+                url: "tareas/{action}/{id}",
+                defaults: new { controller = "Tareas", action = "Index", id = UrlParameter.Optional }
+            );
+
+            //Ruta para carpetas..
+            routes.MapRoute(
+                name: "Carpetas",
+                url: "carpetas/{action}/{id}",
+                defaults: new { controller = "Carpetas", action = "Index", id = UrlParameter.Optional }
+            );
+
+            //Ruta para el Home, sacar la id luego..
+            routes.MapRoute(
+                name: "Home",
+                url: "{controller}/{action}/",
+                defaults: new { controller = "Home", action = "Index" }
             );
         }
     }

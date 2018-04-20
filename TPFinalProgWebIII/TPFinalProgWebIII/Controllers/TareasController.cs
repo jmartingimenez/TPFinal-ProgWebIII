@@ -6,25 +6,20 @@ using System.Web.Mvc;
 
 namespace TPFinalProgWebIII.Controllers
 {
-    public class HomeController : Controller
+    public class TareasController : Controller
     {
-        // GET: Home
+        // GET: Tareas
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Login()
+        public ActionResult Crear()
         {
             return View();
         }
 
-        public ActionResult Registracion()
-        {
-            return View();
-        }
-
-        public ActionResult Logout()
+        public ActionResult Detalle()
         {
             return View();
         }
