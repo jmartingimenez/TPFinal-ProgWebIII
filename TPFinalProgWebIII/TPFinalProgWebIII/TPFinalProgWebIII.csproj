@@ -109,7 +109,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BorrarLuego.cs" />
+    <Compile Include="Models\Entity\Carpeta.cs" />
+    <Compile Include="Models\Entity\Tarea.cs" />
+    <Compile Include="Models\Entity\Usuario.cs" />
+    <Compile Include="Models\Interface\BorrarLuego.cs" />
+    <Compile Include="Models\Repository\BorrarLuego.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

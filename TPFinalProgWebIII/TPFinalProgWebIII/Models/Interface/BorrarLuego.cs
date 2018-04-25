@@ -6,5 +6,6 @@ using System.Threading.Tasks;
 
 namespace TPFinalProgWebIII.Models.Interface {
     interface BorrarLuego {
+        //Eso, borrar luego
     }
 }
