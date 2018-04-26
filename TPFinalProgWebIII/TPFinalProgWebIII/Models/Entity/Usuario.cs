@@ -16,15 +16,13 @@ namespace TPFinalProgWebIII.Models.Entity {
         [StringLength(50, ErrorMessage = "Ingrese un apellido mas corto")]
         public string Apellido { get; set; }
 
-        //Si el DataType no sirve, usar [RegularExpression(blabla)]
-        [Required(ErrorMessage = "El email es obligatorio")]
-        [StringLength(200, ErrorMessage = "Ingrese un email mas corto")]
-        [DataType(DataType.EmailAddress, ErrorMessage = "El email es invalido")]     
+        /*LAS VALIDACIONES LAS MOVI A LA CLASE DE LA VISTA 'Login'. PREGUNTAR LUEGO 
+         QUE HAY QUE HACER CON ESTO...*/
         public string Email { get; set; }
 
-        //El diagrama de la BDD dice que el máximo es 50, el enunciado que es 20 (?)
-        [Required(ErrorMessage = "Debe ingresar una contraseña")]
-        [StringLength(20, ErrorMessage = "Ingrese una contraseña mas corta")]  
+        /*El diagrama de la BDD dice que el máximo es 50, el enunciado que es 20 (?)
+         LAS VALIDACIONES LAS MOVI A LA CLASE DE LA VISTA 'Login'. PREGUNTAR LUEGO 
+         QUE HAY QUE HACER CON ESTO...*/
         public string Contrasenia { get; set; }
 
         [Required]

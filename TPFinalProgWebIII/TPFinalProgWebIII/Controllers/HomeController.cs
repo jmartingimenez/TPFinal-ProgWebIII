@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TPFinalProgWebIII.Models.Entity;
+using TPFinalProgWebIII.Models.View;
 
 namespace TPFinalProgWebIII.Controllers
 {
@@ -17,6 +19,21 @@ namespace TPFinalProgWebIII.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ActionName("Procesar-Login")]
+        public ActionResult Login(Login login)
+        {
+            /*Si los datos no son validos o estan incompletos se vuelve a la vista 
+             y se muestran los errores*/
+            if (!ModelState.IsValid) return View("Login", login);
+
+            /*Aca, es cuando los datos son correctos. Ahora se debería comprobar 
+             si existe el usuario y demas yerbas. Simplemente estoy mandando 
+             este mensaje a la vista para que se vea la diferencia.*/
+            ViewData["MensajeOK"] = "Todo OK. Ahora habría que ir a la BDD";
+            return View("Login");
         }
 
         public ActionResult Registracion()
