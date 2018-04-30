@@ -4,55 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-   <!-- <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />-->
+
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse ">
-       
-            <!-- barra -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Inserte nombre o logo aquí", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-              
-            </div>
-
-            <!-- todo lo siguiente dentro del "bs-example-navbar-collapse-1" se plegará al achicarse-->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-
-            
-                  <ul class="nav navbar-nav">
-                    <li class="active"><a href="/Home/Index">Home </a></li>
-                   
-                </ul>
-                     
-               
-                <ul class="nav navbar-nav navbar-right">
-                   
-                    <li ><a href="#">Iniciar Sesion </a></li>
-                   
-                    <li ><a href="/Home/Login">Registrarse <span class="sr-only">(current)</span></a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">acá va el @@Model.nombre <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Cerrar sesion</a></li>
-                            
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">y algo mas?</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        <!-- /.container-fluid -->
-    </nav>
-
+   
+    @Html.Partial("Partial_navBar")
 
     <!--cuerpo-->
     <div class="container body-content">
