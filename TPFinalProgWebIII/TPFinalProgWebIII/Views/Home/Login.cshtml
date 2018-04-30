@@ -16,6 +16,8 @@
     @Html.PasswordFor(model => model.Contrasenia)<br/>
     @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })<br/>
 
+    //El <text/> lo estoy usando para dejar un espacio entre el checkbox y la palabra
+    @Html.CheckBoxFor(model => model.Recordarme) <text>&nbsp;</text> @Html.LabelFor(model => model.Recordarme)<br />
 
     <input type="submit" value="Iniciar sesi&oacute;n"/><br/>
     @ViewData["MensajeOK"]

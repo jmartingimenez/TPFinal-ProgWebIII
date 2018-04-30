@@ -17,5 +17,7 @@ namespace TPFinalProgWebIII.Models.View {
         [StringLength(20, ErrorMessage = "Ingrese una contraseña mas corta")]
         [Display(Name = "Contraseña")]
         public string Contrasenia { get; set; }
+
+        public bool Recordarme { get; set; } = false;
     }
 }
