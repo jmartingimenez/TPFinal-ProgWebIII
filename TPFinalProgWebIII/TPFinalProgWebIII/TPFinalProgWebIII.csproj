@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -115,6 +116,7 @@
     <Compile Include="Models\Entity\Tarea.cs" />
     <Compile Include="Models\Entity\Usuario.cs" />
     <Compile Include="Models\Interface\BorrarLuego.cs" />
+    <Compile Include="Models\Interface\GeneralService.cs" />
     <Compile Include="Models\Repository\BorrarLuego.cs" />
     <Compile Include="Models\View\Login.cs" />
     <Compile Include="Models\View\Registro.cs" />
