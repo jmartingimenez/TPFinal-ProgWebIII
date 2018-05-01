@@ -93,6 +93,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\general.css" />
     <Content Include="Global.asax" />
+    <Content Include="img\logo2.png" />
+    <Content Include="img\logo1.png" />
     <Content Include="Scripts\bootstrap.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
