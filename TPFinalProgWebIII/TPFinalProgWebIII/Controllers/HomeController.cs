@@ -46,6 +46,15 @@ namespace TPFinalProgWebIII.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ActionName("Procesar-Registro")]
+        public ActionResult Registracion(Registro registro)
+        {
+            if (!ModelState.IsValid) return View("Registracion", registro);
+            ViewData["MensajeOK"] = "Todo OK. Ahora habría que ir a la BDD.";
+            return View("Registracion");
+        }
+
         public ActionResult Logout()
         {
             return View();

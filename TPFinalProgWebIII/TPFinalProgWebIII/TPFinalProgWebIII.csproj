@@ -115,6 +115,7 @@
     <Compile Include="Models\Interface\BorrarLuego.cs" />
     <Compile Include="Models\Repository\BorrarLuego.cs" />
     <Compile Include="Models\View\Login.cs" />
+    <Compile Include="Models\View\Registro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

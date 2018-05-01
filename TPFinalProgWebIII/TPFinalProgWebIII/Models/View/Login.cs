@@ -15,6 +15,7 @@ namespace TPFinalProgWebIII.Models.View {
         //El diagrama de la BDD dice que el máximo es 50, el enunciado que es 20 (?)
         [Required(ErrorMessage = "Debe ingresar una contraseña")]
         [StringLength(20, ErrorMessage = "Ingrese una contraseña mas corta")]
+        [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Contrasenia { get; set; }
 
