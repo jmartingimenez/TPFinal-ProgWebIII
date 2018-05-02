@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TPFinalProgWebIII.Models.Entity;
 
-namespace TPFinalProgWebIII.Models.Interface
+namespace TPFinalProgWebIII.Models.Repository
 {
-    interface IGeneralService<T>
+    public interface IGeneralRepository<T>
     {
         T Crear(T a);
 
@@ -15,6 +16,6 @@ namespace TPFinalProgWebIII.Models.Interface
         void Eliminar(T a);
 
         List<T> Listar();
-
+        Usuario BuscarPorId(int id);
     }
 }

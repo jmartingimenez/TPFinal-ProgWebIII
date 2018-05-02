@@ -115,9 +115,10 @@
     <Compile Include="Models\Entity\Carpeta.cs" />
     <Compile Include="Models\Entity\Tarea.cs" />
     <Compile Include="Models\Entity\Usuario.cs" />
-    <Compile Include="Models\Interface\BorrarLuego.cs" />
-    <Compile Include="Models\Interface\GeneralService.cs" />
-    <Compile Include="Models\Repository\BorrarLuego.cs" />
+    <Compile Include="Models\RepositoryImp\UsuarioRepositoryImp.cs" />
+    <Compile Include="Models\Repository\GeneralRepository.cs" />
+    <Compile Include="Models\ServiceImp\UsuarioServiceImp.cs" />
+    <Compile Include="Models\Service\GeneralService.cs" />
     <Compile Include="Models\View\Login.cs" />
     <Compile Include="Models\View\Registro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
