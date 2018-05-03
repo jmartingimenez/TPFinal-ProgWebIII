@@ -1,24 +1,25 @@
 ﻿@model TPFinalProgWebIII.Models.View.Login
 
-<h2>Home - Login</h2>
+    <h2>Home - Login</h2>
 
-<p>Redirige a p&aacute;gina de inicio.</p>
+    <p>Redirige a p&aacute;gina de inicio.</p>
 
-@using (@Html.BeginForm("Procesar-Login", "Home", FormMethod.Post)){
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
-    @Html.LabelFor(model => model.Email)<br/>
-    @Html.TextBoxFor(model => model.Email)<br/>
-    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    @using (@Html.BeginForm("Procesar-Login", "Home", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+        @Html.LabelFor(model => model.Email)<br />
+        @Html.TextBoxFor(model => model.Email)<br />
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
-    @Html.LabelFor(model => model.Contrasenia)<br/>
-    @Html.PasswordFor(model => model.Contrasenia)<br/>
-    @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })<br/>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+        @Html.LabelFor(model => model.Contrasenia)<br />
+        @Html.PasswordFor(model => model.Contrasenia)<br />
+        @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })<br />
 
-    //El <text/> lo estoy usando para dejar un espacio entre el checkbox y la palabra
-    @Html.CheckBoxFor(model => model.Recordarme) <text>&nbsp;</text> @Html.LabelFor(model => model.Recordarme)<br />
+        //El <text/> lo estoy usando para dejar un espacio entre el checkbox y la palabra
+        @Html.CheckBoxFor(model => model.Recordarme) <text>&nbsp;</text> @Html.LabelFor(model => model.Recordarme)<br />
 
-    <input type="submit" value="Iniciar sesi&oacute;n"/><br/>
-    @ViewData["MensajeOK"]
-}
+        <input type="submit" value="Iniciar sesi&oacute;n" /><br />
+        @ViewData["MensajeOK"]
+    }

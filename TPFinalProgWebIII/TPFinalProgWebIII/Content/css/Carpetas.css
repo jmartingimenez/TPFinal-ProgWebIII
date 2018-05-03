@@ -1,0 +1,25 @@
+﻿
+
+
+.cuadro_carpetas
+{
+    display:flex;
+    flex-wrap:wrap;
+
+}
+.contenedor_carpetas
+{
+   width:150px;
+   
+   display:flex;
+   flex-direction:column;
+}
+.carpeta
+{
+    height:150px;
+    margin:0 auto;
+}
+.contenedor_carpetas>p
+{
+    margin:0 auto;
+}

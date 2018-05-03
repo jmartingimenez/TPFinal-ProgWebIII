@@ -1,0 +1,36 @@
+﻿
+@import url(https://fonts.googleapis.com/css?family=Overlock:700);
+  body {
+  	font-family: Overlock;
+  }
+  
+    html, body 
+{
+    height: 100%;
+    width: 100%;
+    margin:0;
+
+}
+.jumbotron
+{
+    background-color:white;
+}
+
+.compu_img
+{
+    height:400px;
+
+}
+
+@media screen and (max-width: 500px)
+{
+.compu_img
+{
+    height:200px;
+
+}
+  }
+
+
+
+

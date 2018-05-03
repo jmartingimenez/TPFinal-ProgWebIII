@@ -90,18 +90,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\general.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\Carpetas.css" />
+    <Content Include="Content\css\general.css" />
+    <Content Include="Content\img\campu5.png" />
+    <Content Include="Content\img\CarpetaEjemplo.png" />
+    <Content Include="Content\img\campu2.png" />
     <Content Include="Global.asax" />
-    <Content Include="img\logo2.png" />
-    <Content Include="img\logo1.png" />
-    <Content Include="Scripts\bootstrap.js" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Content\img\logo2.png" />
+    <Content Include="Content\img\logo1.png" />
+    <Content Include="Content\js\bootstrap.js" />
+    <None Include="Content\js\jquery-1.10.2.intellisense.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jquery-1.10.2.js" />
+    <Content Include="Content\js\jquery-1.10.2.min.js" />
+    <Content Include="Content\js\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -133,7 +137,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Content\js\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registracion.cshtml" />
     <Content Include="Views\Carpetas\Index.cshtml" />

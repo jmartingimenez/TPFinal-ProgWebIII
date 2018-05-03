@@ -5,24 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - MyFolder</title>
  
-   <link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css">
+   <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" type="text/css">
+   <link rel="stylesheet" href="~/Content/css/general.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/Carpetas.css" type="text/css">
    </head>
 <body>
    
     @Html.Partial("Partial_navBar")
 
     <!--cuerpo-->
-    <div class="container body-content container-fluid">
+
+    <div class="container container-fluid">
         @RenderBody()
         <hr />
-
 
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
 </body>
 </html>

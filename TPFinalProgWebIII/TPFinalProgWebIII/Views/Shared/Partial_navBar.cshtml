@@ -1,53 +1,54 @@
 ﻿<nav class="navbar navbar-inverse ">
-
-    <!-- barra -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-       
-
-           
-        <!--quitar el style luego-->
-        <a href="/Home/Index"> <img src="~/img/logo2.png" style="height:29px; margin-top:9px;margin-left:15px;" /> </a>
-            
-    </div>
-
-    <!-- todo lo siguiente dentro del "bs-example-navbar-collapse-1" se plegará al achicarse-->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+   
+        <!-- barra -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
 
 
-        <ul class="nav navbar-nav">
-            <li ><a href="/Home/Index">Home </a></li>
-            <li ><a href="/Carpetas/Index">Mis Carpetas </a></li>
-            <li ><a href="/Tareas/Index">Mis Tareas </a></li>
-        </ul>
+            <!--quitar el style luego-->
+            <a href="/Home/Index"> <img src="~/Content/img/logo2.png" style="height:29px; margin-top:9px;margin-left:15px;" /> </a>
+
+        </div>
+
+        <!-- todo lo siguiente dentro del "bs-example-navbar-collapse-1" se plegará al achicarse-->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 
-        <ul class="nav navbar-nav navbar-right">
 
-            <li><a href="/Home/Login">Iniciar Sesion </a></li>
-
-            <li><a href="/Home/Registracion">Registrarse <span class="sr-only">(current)</span></a></li>
-
-
-          
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">acá va el @@Model.nombre <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/Home/Logout">Cerrar sesion</a></li>
-
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">y algo mas?</a></li>
-                </ul>
-            </li>
+            <ul class="nav navbar-nav">
+                <li><a href="/Home/Index">Home </a></li>
+                <li><a href="/Carpetas/Index">Mis Carpetas </a></li>
+                <li><a href="/Tareas/Index">Mis Tareas </a></li>
+            </ul>
 
 
-        </ul>
-    </div><!-- /.navbar-collapse -->
-    <!-- /.container-fluid -->
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="/Home/Login">Iniciar Sesion </a></li>
+
+                <li><a href="/Home/Registracion">Registrarse <span class="sr-only">(current)</span></a></li>
+
+
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">acá va el @@Model.nombre <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Home/Logout">Cerrar sesion</a></li>
+
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">y algo mas?</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+        <!-- /.container-fluid -->
+   
 </nav>

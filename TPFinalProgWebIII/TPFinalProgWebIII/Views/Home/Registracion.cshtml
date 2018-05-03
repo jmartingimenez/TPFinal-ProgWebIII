@@ -1,38 +1,39 @@
 ﻿@model TPFinalProgWebIII.Models.View.Registro
 
-<h2>Home - Registraci&oacute;n</h2>
 
-Redirige a p&aacute;gina de inicio.
+    <h2>Home - Registraci&oacute;n</h2>
 
-@using (@Html.BeginForm("Procesar-Registro", "Home", FormMethod.Post))
-{
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
-    @Html.LabelFor(model => model.Nombre)<br />
-    @Html.TextBoxFor(model => model.Nombre)<br />
-    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+    Redirige a p&aacute;gina de inicio.
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
-    @Html.LabelFor(model => model.Apellido)<br />
-    @Html.TextBoxFor(model => model.Apellido)<br />
-    @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+    @using (@Html.BeginForm("Procesar-Registro", "Home", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+        @Html.LabelFor(model => model.Nombre)<br />
+        @Html.TextBoxFor(model => model.Nombre)<br />
+        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
-    @Html.LabelFor(model => model.Email)<br />
-    @Html.TextBoxFor(model => model.Email)<br />
-    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+        @Html.LabelFor(model => model.Apellido)<br />
+        @Html.TextBoxFor(model => model.Apellido)<br />
+        @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
-    @Html.LabelFor(model => model.Contrasenia)<br />
-    @Html.PasswordFor(model => model.Contrasenia)<br />
-    @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })<br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+        @Html.LabelFor(model => model.Email)<br />
+        @Html.TextBoxFor(model => model.Email)<br />
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
-    @Html.LabelFor(model => model.ConfirmarContrasenia)<br />
-    @Html.PasswordFor(model => model.ConfirmarContrasenia)<br />
-    @Html.ValidationMessageFor(model => model.ConfirmarContrasenia, "", new { @class = "text-danger" })<br /><br/>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+        @Html.LabelFor(model => model.Contrasenia)<br />
+        @Html.PasswordFor(model => model.Contrasenia)<br />
+        @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })<br />
 
-    <text>Aca debería haber un captcha<br/></text>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+        @Html.LabelFor(model => model.ConfirmarContrasenia)<br />
+        @Html.PasswordFor(model => model.ConfirmarContrasenia)<br />
+        @Html.ValidationMessageFor(model => model.ConfirmarContrasenia, "", new { @class = "text-danger" })<br /><br />
 
-    <input type="submit" value="Registrarse" /><br />
-    @ViewData["MensajeOK"]
-}
+        <text>Aca debería haber un captcha<br /></text>
+
+        <input type="submit" value="Registrarse" /><br />
+        @ViewData["MensajeOK"]
+    }
