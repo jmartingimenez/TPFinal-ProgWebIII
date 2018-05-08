@@ -1,4 +1,5 @@
-﻿using System;
+﻿using reCAPTCHA.MVC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,12 +23,16 @@ namespace TPFinalProgWebIII.Controllers
         }
 
         [HttpPost]
+        [CaptchaValidator(
+        PrivateKey = "6LcmFlgUAAAAAMMze1zXEwx5xdRMiH7JkLv9gOw5",
+        ErrorMessage = "Captcha invalido",
+        RequiredMessage = "Debe clickear el captcha")]
         [ActionName("Procesar-Login")]
-        public ActionResult Login(Login login)
+        public ActionResult Login(Login login, bool captchaValid)
         {               
             /*Si los datos no son validos o estan incompletos se vuelve a la vista 
              y se muestran los errores*/
-            if (!ModelState.IsValid) return View("Login", login);
+            if (!ModelState.IsValid || !captchaValid) return View("Login", login);
 
             /*Aca, es cuando los datos son correctos. Ahora se debería comprobar 
              si existe el usuario y demas yerbas. Simplemente estoy mandando 
