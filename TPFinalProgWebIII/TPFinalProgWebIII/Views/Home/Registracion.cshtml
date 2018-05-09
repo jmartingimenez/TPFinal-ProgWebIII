@@ -31,10 +31,11 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
         @Html.LabelFor(model => model.ConfirmarContrasenia)<br />
         @Html.PasswordFor(model => model.ConfirmarContrasenia)<br />
-        @Html.ValidationMessageFor(model => model.ConfirmarContrasenia, "", new { @class = "text-danger" })<br /><br />
+        @Html.ValidationMessageFor(model => model.ConfirmarContrasenia, "", new { @class = "text-danger" })<br /><br/>
 
         @Html.Recaptcha()
-        @Html.ValidationMessage("ReCaptcha")
+        @Html.ValidationMessage("ReCaptcha","", new { @class = "text-danger" })
+        <br/><br/>
 
         <input type="submit" value="Registrarse" /><br />
         @ViewData["MensajeOK"]

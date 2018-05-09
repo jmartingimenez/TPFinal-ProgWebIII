@@ -23,16 +23,12 @@ namespace TPFinalProgWebIII.Controllers
         }
 
         [HttpPost]
-        [CaptchaValidator(
-        PrivateKey = "6LcmFlgUAAAAAMMze1zXEwx5xdRMiH7JkLv9gOw5",
-        ErrorMessage = "Captcha invalido",
-        RequiredMessage = "Debe clickear el captcha")]
         [ActionName("Procesar-Login")]
         public ActionResult Login(Login login, bool captchaValid)
-        {               
+        {
             /*Si los datos no son validos o estan incompletos se vuelve a la vista 
              y se muestran los errores*/
-            if (!ModelState.IsValid || !captchaValid) return View("Login", login);
+            if (!ModelState.IsValid) return View("Login", login);
 
             /*Aca, es cuando los datos son correctos. Ahora se debería comprobar 
              si existe el usuario y demas yerbas. Simplemente estoy mandando 
@@ -52,8 +48,11 @@ namespace TPFinalProgWebIII.Controllers
         }
 
         [HttpPost]
+        [CaptchaValidator(
+        ErrorMessage = "Captcha invalido",
+        RequiredMessage = "Debe clickear el captcha")]
         [ActionName("Procesar-Registro")]
-        public ActionResult Registracion(Registro registro)
+        public ActionResult Registracion(Registro registro, bool captchaValid)
         {
             if (!ModelState.IsValid) return View("Registracion", registro);
             ViewData["MensajeOK"] = "Todo OK. Ahora habría que ir a la BDD.";
