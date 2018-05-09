@@ -24,7 +24,7 @@ namespace TPFinalProgWebIII.Controllers
 
         [HttpPost]
         [ActionName("Procesar-Login")]
-        public ActionResult Login(Login login, bool captchaValid)
+        public ActionResult Login(Login login)
         {
             /*Si los datos no son validos o estan incompletos se vuelve a la vista 
              y se muestran los errores*/
