@@ -13,6 +13,10 @@ namespace TPFinalProgWebIII
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Para el captcha
+            routes.IgnoreRoute("{*botdetect}",
+                new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
+
             //Ruta para tareas..
             routes.MapRoute(
                 name: "Tareas",
