@@ -1,5 +1,4 @@
-﻿using reCAPTCHA.MVC;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -48,11 +47,8 @@ namespace TPFinalProgWebIII.Controllers
         }
 
         [HttpPost]
-        [CaptchaValidator(
-        ErrorMessage = "Captcha invalido",
-        RequiredMessage = "Debe clickear el captcha")]
         [ActionName("Procesar-Registro")]
-        public ActionResult Registracion(Registro registro, bool captchaValid)
+        public ActionResult Registracion(Registro registro)
         {
             if (!ModelState.IsValid) return View("Registracion", registro);
             ViewData["MensajeOK"] = "Todo OK. Ahora habría que ir a la BDD.";
