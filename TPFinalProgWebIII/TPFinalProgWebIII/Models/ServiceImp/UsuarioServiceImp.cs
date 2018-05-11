@@ -3,45 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TPFinalProgWebIII.Models.Service;
-using TPFinalProgWebIII.Models.Entity;
 using TPFinalProgWebIII.Models.Repository;
 using TPFinalProgWebIII.Models.RepositoryImp;
-
+using TPFinalProgWebIII.Models.View;
 
 namespace TPFinalProgWebIII.Models.ServiceImp
 {
-    public class UsuarioServiceImp : IGeneralService<Usuario>
+    public class UsuarioServiceImp : IGeneralService<Usuario>, IUsuarioService
     {
-        private IGeneralRepository<Usuario> generalrepository;
+        private IGeneralRepository<Usuario> _generalRepository;
+        private IUsuarioService _usuarioService;
 
-        public UsuarioServiceImp(IGeneralRepository<Usuario> generalrepository)
+        public UsuarioServiceImp(IGeneralRepository<Usuario> generalRepository, IUsuarioService usuarioService)
         {
-            this.generalrepository = generalrepository;
+            _generalRepository = generalRepository;
+            _usuarioService = usuarioService;
         }
 
         public Usuario Crear(Usuario a)
         {
-           return generalrepository.Crear(a);
+           return _generalRepository.Crear(a);
         }
 
         public void Eliminar(Usuario a)
         {
-            generalrepository.Crear(a);
+            _generalRepository.Crear(a);
         }
 
         public List<Usuario> Listar()
         {
-            return generalrepository.Listar();
+            return _generalRepository.Listar();
         }
 
         public Usuario Modificar(Usuario a)
         {
-            return generalrepository.Modificar(a);
+            return _generalRepository.Modificar(a);
         }
 
         public Usuario BuscarPorId(int id)
         {
-            return generalrepository.BuscarPorId(id);
+            return _generalRepository.BuscarPorId(id);
+        }
+
+        public bool Login(Login login)
+        {
+            return _usuarioService.Login(login);
         }
     }
 }

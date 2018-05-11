@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="755fa8527fb0455a9e1cad17d0e29c75" Name="Diagram1">
+        <EntityTypeShape EntityType="PW3TP_20181C_TareasModel.ArchivoTarea" Width="1.5" PointX="8.375" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PW3TP_20181C_TareasModel.Carpeta" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PW3TP_20181C_TareasModel.ComentarioTarea" Width="1.5" PointX="8.875" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PW3TP_20181C_TareasModel.Tarea" Width="1.5" PointX="5.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="PW3TP_20181C_TareasModel.Usuario" Width="1.5" PointX="2.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="PW3TP_20181C_TareasModel.FK_ArchivoTarea_Tarea" ManuallyRouted="false" />
+        <AssociationConnector Association="PW3TP_20181C_TareasModel.FK_Carpeta_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="PW3TP_20181C_TareasModel.FK_Comentario_Tarea" ManuallyRouted="false" />
+        <AssociationConnector Association="PW3TP_20181C_TareasModel.FK_Tareas_Usuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
