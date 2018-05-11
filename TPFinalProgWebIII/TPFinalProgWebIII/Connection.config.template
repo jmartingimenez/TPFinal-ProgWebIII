@@ -1,0 +1,25 @@
+﻿<!--
+CREAR UNA COPIA DE ESTE ARCHIVO Y LLAMARLA 'Connection.config'.
+LA COPIA DEBE ESTAR AL MISMO NIVEL QUE ESTE ARCHIVO.
+
+EDITAR...
+  data source (instancia). Ej: 'data source=.\SQLEXPRESS;'
+  user id (usuario para SQL). Ej: 'user id=sa;'
+  password (pass para SQL). Ej: 'password=;'
+  
+EL ARCHIVO 'Connection.config' NO ES VIGILADO POR GIT, PERO ESTE SI.
+NO EDITAR ESTE ARCHIVO!!! (ESTA DE EJEMPLO)
+-->
+
+<connectionStrings>
+  <add name="PW3TP_20181C_TareasEntities"
+       connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;
+       provider connection string=&quot;
+       data source=_INSTANCIA_SQL_;
+       initial catalog=PW3TP_20181C_Tareas;
+       persist security info=True;
+       user id=_USUARIO_SQL_;
+       password=_PASSWORD_SQL_;
+       MultipleActiveResultSets=True;
+       App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+</connectionStrings>
