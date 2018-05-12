@@ -27,6 +27,7 @@ namespace TPFinalProgWebIII.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [ActionName("Procesar-Login")]
         public ActionResult Login(Login login)
         {
@@ -67,6 +68,7 @@ namespace TPFinalProgWebIII.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [AllowAnonymous]
         [CaptchaValidation("CaptchaCode", "Captcha", 
             "Ingrese el captcha correctamente")]

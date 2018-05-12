@@ -6,13 +6,12 @@
 
     @using (@Html.BeginForm("Procesar-Login", "Home", FormMethod.Post))
     {
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+        @Html.AntiForgeryToken()        
+        
         @Html.LabelFor(model => model.Email)<br />
         @Html.TextBoxFor(model => model.Email)<br />
-        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br/>
 
-
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
         @Html.LabelFor(model => model.Contrasenia)<br />
         @Html.PasswordFor(model => model.Contrasenia)<br />
         @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })<br />
