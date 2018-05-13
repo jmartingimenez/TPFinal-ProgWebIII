@@ -13,6 +13,10 @@ namespace TPFinalProgWebIII.Models.ServiceImp
     {
         private IGeneralRepository<Usuario> _generalRepository;
         private IUsuarioService _usuarioService;
+        
+        //para probar el login.
+        public UsuarioServiceImp() { }
+
 
         public UsuarioServiceImp(IGeneralRepository<Usuario> generalRepository, IUsuarioService usuarioService)
         {
@@ -47,6 +51,10 @@ namespace TPFinalProgWebIII.Models.ServiceImp
 
         public bool Login(Login login)
         {
+
+            //UsuarioRepositoryImp uri = new UsuarioRepositoryImp();
+           // return uri.Login(login);
+
             return _usuarioService.Login(login);
         }
     }
