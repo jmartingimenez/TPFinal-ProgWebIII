@@ -40,6 +40,10 @@ namespace TPFinalProgWebIII.Controllers
             {
                 /*FALTARIA PASAR LA CONSULTA A SERVICIOS*/
                 if (db.Usuario.Any(x => x.Email == login.Email && x.Contrasenia == login.Contrasenia)){
+
+                    //probando la sesion
+                    Session["Nombre"] = login.Email;
+
                         /*Aca, es cuando los datos son correctos. Ahora se debería comprobar 
                  si existe el usuario y demas yerbas. Simplemente estoy mandando 
                  este mensaje a la vista para que se vea la diferencia.*/

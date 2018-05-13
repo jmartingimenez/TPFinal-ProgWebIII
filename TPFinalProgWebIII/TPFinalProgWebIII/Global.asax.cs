@@ -14,5 +14,11 @@ namespace TPFinalProgWebIII
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+        protected void Session_Start(Object sender, EventArgs e)
+        {
+            Session["usuarioID"] = String.Empty;
+            Session["Nombre"] = String.Empty;
+        }
     }
 }
