@@ -36,27 +36,36 @@ namespace TPFinalProgWebIII.Controllers
             
             /*Si los datos no son validos o estan incompletos se vuelve a la vista 
              y se muestran los errores*/
+             
             if (!ModelState.IsValid)
                 return View("Login", login);
             else
             {
                 /*FALTARIA PASAR LA CONSULTA A SERVICIOS*/
+
                 if (db.Usuario.Any(x => x.Email == login.Email && x.Contrasenia == login.Contrasenia)){
 
+// probando validacion con los servicios y repository                
+//  UsuarioServiceImp usi = new UsuarioServiceImp();
+
+//  if (usi.Login(login))
+//   {
                     //probando la sesion
                     Session["Nombre"] = login.Email;
 
-                        /*Aca, es cuando los datos son correctos. Ahora se debería comprobar 
-                 si existe el usuario y demas yerbas. Simplemente estoy mandando 
-                 este mensaje a la vista para que se vea la diferencia.*/
-                        ViewData["MensajeOK"] = "Todo OK. Ahora habría que ir a la BDD.";
+                    /*Aca, es cuando los datos son correctos. Ahora se debería comprobar 
+                     si existe el usuario y demas yerbas. Simplemente estoy mandando 
+                     este mensaje a la vista para que se vea la diferencia.*/
+                    ViewData["MensajeOK"] = "Todo OK. Ahora habría que ir a la BDD.";
 
                     /*Si se tildo la opción de recordar, aca es donde se gestionaría la cookie*/
                     if (login.Recordarme)
                         ViewData["MensajeOK"] = ViewData["MensajeOK"] + " Recordado!!";
 
                     return View("Login");
-                 }
+//   }
+
+               }
                 else
                 {
                     ViewData["MensajeOK"] = "Todo MAL - NO SE LOGUEO.";
@@ -91,6 +100,11 @@ namespace TPFinalProgWebIII.Controllers
 
         public ActionResult Logout()
         {
+            if (!Session["Nombre"].Equals(String.Empty))
+            {
+                Session["Nombre"] = String.Empty;
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
