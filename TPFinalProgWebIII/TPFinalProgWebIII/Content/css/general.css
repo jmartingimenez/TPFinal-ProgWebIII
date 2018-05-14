@@ -11,26 +11,24 @@
     margin:0;
 
 }
-.jumbotron
+
+.centradoGeneral
 {
-    background-color:white;
+    margin-top:50px;
+    display:flex;
+    justify-content:center;
 }
 
-.compu_img
-{
-    height:400px;
-
+.form-control {
+    display: inline;
 }
 
-@media screen and (max-width: 500px)
+div>h2
 {
-.compu_img
-{
-    height:200px;
-
+    text-align:center;
 }
-  }
 
-
-
-
+.btn-login-registro
+{
+  text-align:center;
+}

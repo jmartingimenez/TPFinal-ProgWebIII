@@ -6,33 +6,23 @@ using System.Web.Mvc;
 
 namespace TPFinalProgWebIII.Controllers
 {
-    public class TareasController : Controller
+    public class TareasController : CustomController
     {
         // GET: Tareas
         public ActionResult Index()
         {
-            if (Session["Nombre"].Equals(String.Empty))
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
+         return View();
         }
 
         public ActionResult Crear()
         {
-            if (Session["Nombre"].Equals(String.Empty))
-            {
-                return RedirectToAction("Index", "Home");
-            }
+         
             return View();
         }
 
         public ActionResult Detalle()
         {
-            if (Session["Nombre"].Equals(String.Empty))
-            {
-                return RedirectToAction("Index", "Home");
-            }
+      
             return View();
         }
     }

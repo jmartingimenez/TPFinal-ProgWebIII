@@ -1,0 +1,20 @@
+﻿
+.jumbotron
+{
+    background-color:white;
+}
+
+.compu_img
+{
+    height:400px;
+
+}
+
+@media screen and (max-width: 500px)
+{
+.compu_img
+{
+    height:200px;
+
+}
+  }

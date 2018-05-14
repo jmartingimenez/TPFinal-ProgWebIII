@@ -117,6 +117,9 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\Carpetas.css" />
     <Content Include="Content\css\general.css" />
+    <Content Include="Content\css\Home.css" />
+    <Content Include="Content\css\Login.css" />
+    <Content Include="Content\css\Registro.css" />
     <Content Include="Content\img\campu5.png" />
     <Content Include="Content\img\CarpetaEjemplo.png" />
     <Content Include="Content\img\campu2.png" />

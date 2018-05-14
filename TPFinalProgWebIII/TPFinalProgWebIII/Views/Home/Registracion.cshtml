@@ -3,39 +3,54 @@
 @{ MvcCaptcha Captcha = new MvcCaptcha("Captcha"); }
 
 
-<h2>Home - Registraci&oacute;n</h2>
+<div>
+    <p>
+        <h2> No tienes una cuenta? 
+            crea una aquí </h2>
+        <!-- Redirige a pagina de inicio.-->
+    </p>
+</div>
 
-Redirige a p&aacute;gina de inicio.
+<!---Redirige a p&aacute;gina de inicio.-->
 
-@using (@Html.BeginForm("Procesar-Registro", "Home", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    
-    @Html.LabelFor(model => model.Nombre)<br />
-    @Html.TextBoxFor(model => model.Nombre)<br />
-    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })<br/>
+<div class="centradoGeneral">
+    <div class="fondoRecuadroRegistrar">
+        <div class="formuRegistro">
+            @using (@Html.BeginForm("Procesar-Registro", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
 
-    @Html.LabelFor(model => model.Apellido)<br />
-    @Html.TextBoxFor(model => model.Apellido)<br />
-    @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })<br/>
+                @Html.LabelFor(model => model.Nombre)<br />
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })<br />
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })<br />
 
-    @Html.LabelFor(model => model.Email)<br />
-    @Html.TextBoxFor(model => model.Email)<br />
-    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br/>
+                @Html.LabelFor(model => model.Apellido)<br />
+                @Html.TextBoxFor(model => model.Apellido, new { @class = "form-control" })<br />
+                @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })<br />
 
-    @Html.LabelFor(model => model.Contrasenia)<br />
-    @Html.PasswordFor(model => model.Contrasenia)<br />
-    @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })<br />
+                @Html.LabelFor(model => model.Email)<br />
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })<br />
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br />
 
-    @Html.LabelFor(model => model.ConfirmarContrasenia)<br />
-    @Html.PasswordFor(model => model.ConfirmarContrasenia)<br />
-    @Html.ValidationMessageFor(model => model.ConfirmarContrasenia, "", new { @class = "text-danger" })<br /><br/>
-    
-    @Html.Captcha(Captcha)<br /><br />
-    <text>Ingrese el captcha</text><br />
-    @Html.TextBox("CaptchaCode")<br/>
-    @Html.ValidationMessage("CaptchaCode", "", new { @class = "text-danger" })<br/><br/>
+                @Html.LabelFor(model => model.Contrasenia)<br />
+                @Html.PasswordFor(model => model.Contrasenia, new { @class = "form-control" })<br />
+                @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })<br />
 
-    <input type="submit" value="Registrarse" /><br />
-    @ViewData["MensajeOK"]
-}
+                @Html.LabelFor(model => model.ConfirmarContrasenia)<br />
+                @Html.PasswordFor(model => model.ConfirmarContrasenia, new { @class = "form-control" })<br />
+                @Html.ValidationMessageFor(model => model.ConfirmarContrasenia, "", new { @class = "text-danger" })<br /><br />
+
+                @Html.Captcha(Captcha)<br /><br />
+                <text>Ingrese el captcha</text><br />
+                @Html.TextBox("CaptchaCode")<br />
+                @Html.ValidationMessage("CaptchaCode", "", new { @class = "text-danger" })<br /><br />
+
+                <div class="btn-login-registro">
+                <input type="submit" value="Registrarse" class="btn btn-primary" /><br/>
+                </div>
+                @ViewData["MensajeOK"]
+            }
+
+        </div>
+    </div>   
+ </div>

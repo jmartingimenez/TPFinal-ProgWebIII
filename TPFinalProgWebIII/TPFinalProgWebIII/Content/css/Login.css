@@ -1,0 +1,25 @@
+﻿
+.fondoRecuadroLogin
+{
+   
+   height:350px;
+  max-width:390px;
+   min-width:340px;
+   background-color:gainsboro;
+  font-size:larger;
+    box-shadow:#808080 10px 10px 20px -3px;
+}
+
+.formuLogin
+{
+  padding:40px;
+ 
+}
+
+
+
+.checkbox
+{
+    margin-left: 20px;
+}
+

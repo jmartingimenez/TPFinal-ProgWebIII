@@ -1,24 +1,43 @@
 ﻿@model TPFinalProgWebIII.Models.View.Login
 
-    <h2>Home - Login</h2>
+<div>
+   <p>
+    <h2>Tienes una cuenta?</h2>
+   <!-- Redirige a pagina de inicio.-->
+</p>
+</div>
+   
+<div class="centradoGeneral">
+   
+    <div class="fondoRecuadroLogin">
 
-    <p>Redirige a p&aacute;gina de inicio.</p>
+        
+        <div class="formuLogin">
 
     @using (@Html.BeginForm("Procesar-Login", "Home", FormMethod.Post))
     {
         @Html.AntiForgeryToken()        
-        
+
         @Html.LabelFor(model => model.Email)<br />
-        @Html.TextBoxFor(model => model.Email)<br />
-        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br/>
+        @Html.TextBoxFor(model => model.Email, new { @placeholder = "Ej: email@hotmail.com", @class = "form-control" })<br />
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br />
 
         @Html.LabelFor(model => model.Contrasenia)<br />
-        @Html.PasswordFor(model => model.Contrasenia)<br />
+        @Html.PasswordFor(model => model.Contrasenia, new { @class = "form-control" })<br />
         @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })<br />
 
-        //El <text/> lo estoy usando para dejar un espacio entre el checkbox y la palabra
-        @Html.CheckBoxFor(model => model.Recordarme) <text>&nbsp;</text> @Html.LabelFor(model => model.Recordarme)<br />
 
-        <input type="submit" value="Iniciar sesi&oacute;n" /><br />
+        <div class="checkbox">
+                @Html.CheckBoxFor(model => model.Recordarme)
+                @Html.LabelFor(model => model.Recordarme)
+        </div>
+        <br />
+        <div class="btn-login-registro">
+        <input type="submit" value="Iniciar sesi&oacute;n" class="btn btn-primary"/>
+        </div>
         @ViewData["MensajeOK"]
+        
     }
+            </div>
+    </div>
+</div>
