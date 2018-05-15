@@ -14,7 +14,13 @@ namespace TPFinalProgWebIII.Controllers
         // GET: Carpetas
         public ActionResult Index()
         {
-            return View();
+            int id;
+            int.TryParse(Session["IdUsuario"].ToString(), out id);
+            Usuario usuario = db.Usuario.Single(x => x.IdUsuario == id);
+
+            ViewBag.carpetas = usuario.Carpeta.OrderBy(x => x.Nombre).ToList();
+
+            return View("Index", ViewBag);
         }
 
         public ActionResult Crear()
@@ -51,10 +57,11 @@ namespace TPFinalProgWebIII.Controllers
             
         }
 
-        public ActionResult Tareas()
+        public ActionResult Tareas(int id)
         {
-        
-            return View();
+            ViewBag.tareas = db.Tarea.Where(x => x.IdCarpeta == id).ToList();
+
+            return View("Tareas", ViewBag);
         }
     }
 }

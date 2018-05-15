@@ -1,3 +1,11 @@
-﻿<h2>Carpetas - Tareas</h2>
+﻿<h2>Tareas en carpeta</h2>
 
-id como par&aacute;metro opcional...
+<div class="flex-column col-md-4">
+    <h3>Tareas</h3>
+    @foreach (Tarea x in ViewBag.tareas)
+    {
+        <div class="p-2 clearfix lineacarpeta">
+            <div class="p-2">@x.FechaFin - @x.Nombre</div>
+        </div>
+    }
+</div>
