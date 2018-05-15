@@ -1,3 +1,38 @@
 ﻿<h2>Tareas - Detalle</h2>
 
-Recibe id como par&aacute;metro
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Nombre: @ViewBag.tarea.Nombre</h3>
+    </div>
+    <div class="panel-body">
+        Descripcion: @ViewBag.tarea.Descripcion<br />
+        Horas estimadas: @ViewBag.tarea.EstimadoHoras<br />
+        Fecha creaci&oacute;n: @ViewBag.tarea.FechaCreacion <br />
+        Fecha fin: @ViewBag.tarea.FechaFin <br />
+        Prioridad: @ViewBag.tarea.Prioridad <br />
+        Completada: @ViewBag.tarea.Completada <br />
+    </div>
+</div>
+
+<h4>Comentarios</h4>
+
+@foreach (ComentarioTarea x in ViewBag.tarea.ComentarioTarea)
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @x.FechaCreacion - @x.Texto
+        </div>
+    </div>
+
+}
+<h4>Archivos adjuntos</h4>
+
+@foreach (ArchivoTarea x in ViewBag.tarea.ArchivoTarea)
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @x.IdArchivoTarea - @x.FechaCreacion -> <a href="@x.RutaArchivo">Link</a>
+        </div>
+    </div>
+
+}

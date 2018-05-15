@@ -1,1 +1,34 @@
-﻿<h2>Tareas - Index</h2>
+﻿<h2>Mis Tareas</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descrip.</th>
+            <th>Horas estim.</th>
+            <th>Fecha creaci&oacute;n</th>
+            <th>Fecha fin</th>
+            <th>Prioridad</th>
+            <th>Completada</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Tarea x in ViewBag.tareas)
+        {
+          <tr>
+              <td>@x.IdTarea</td>
+              <td>@x.Nombre</td>
+              <td>@x.Descripcion</td>
+              <td>@x.EstimadoHoras</td>
+              <td>@x.FechaCreacion</td>
+              <td>@x.FechaFin</td>
+              <td>@x.Prioridad</td>
+              <td>@x.Completada</td>
+              <td><a href="/tareas/detalle/@x.IdTarea">Detalle</a></td>
+          </tr>
+        }
+    </tbody>
+
+</table>
