@@ -63,39 +63,38 @@ namespace TPFinalProgWebIII.Controllers
                 if (db.Usuario.Any(x => x.Email == login.Email && x.Contrasenia == login.Contrasenia)){
 
                     usuario = db.Usuario.Single(x => x.Email == login.Email && x.Contrasenia == login.Contrasenia);
-                    /* 
-                         UsuarioServiceImp usi = new UsuarioServiceImp();
 
-                         if (usi.Login(login))
-                         {*/
-
+                    //No permitiendo logearse a un user inactivo
+                    if(usuario.Activo == 0)
+                    {
+                        ViewData["MensajeOK"] = "Necesitas activar tu cuenta primero.";
+                        return View("Login");
+                    }
+                    
                     //probando la sesion
                     Session["IdUsuario"] = usuario.IdUsuario;
                     Session["Nombre"] = usuario.Email;
 
-                    Console.WriteLine(Session["IdUsuario"]);
-                    /*Aca, es cuando los datos son correctos. Ahora se debería comprobar 
-                     si existe el usuario y demas yerbas. Simplemente estoy mandando 
-                     este mensaje a la vista para que se vea la diferencia.*/
-                    ViewData["MensajeOK"] = "Todo OK. Ahora habría que ir a la BDD";
+                    Debug.WriteLine(Session["IdUsuario"]);
 
-                    /*Si se tildo la opción de recordar, aca es donde se gestionaría la cookie*/
+                    /*Creando una cookie
+                     - Pendiente revisar que exista
+                     - Pendiente encriptarla*/
                     if (login.Recordarme)
-                        ViewData["MensajeOK"] = ViewData["MensajeOK"] + " Recordado!!";
+                    {
+                        Response.Cookies["Usuario"]["Mail"] = login.Email;
+                        Response.Cookies["Usuario"].Expires = DateTime.Now.AddDays(90);
+                    }
 
                     return RedirectToAction("Index");
-//   }
-
                }
                 else
                 {
-                    ViewData["MensajeOK"] = "Todo MAL - NO SE LOGUEO.";
+                    ViewData["MensajeOK"] = "Usuario o contraseña incorrecto.";
 
                     return View("Login", login);
                 }
-            }
-
-            
+            }            
         }
 
         public ActionResult Registracion()
