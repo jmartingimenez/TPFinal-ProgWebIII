@@ -1,6 +1,6 @@
 ﻿<h2>Mis Tareas</h2>
 
-<table class="table table-hover">
+<table class="table table-hover text-center">
     <thead>
         <tr>
             <th>ID</th>
@@ -25,8 +25,11 @@
               <td>@x.FechaCreacion</td>
               <td>@x.FechaFin</td>
               <td>@x.Prioridad</td>
-              <td>@x.Completada</td>
-              <td><a href="/tareas/detalle/@x.IdTarea">Detalle</a></td>
+              <td>@if(Convert.ToBoolean(@x.Completada)){
+                  <span class="glyphicon glyphicon-ok"></span>
+                   }
+              </td>
+              <td><a href="/tareas/detalle/@x.IdTarea"><span class=" glyphicon glyphicon-search"></span></a></td>
           </tr>
         }
     </tbody>

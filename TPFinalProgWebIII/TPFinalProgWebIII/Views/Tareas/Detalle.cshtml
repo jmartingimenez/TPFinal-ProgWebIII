@@ -10,7 +10,13 @@
         Fecha creaci&oacute;n: @ViewBag.tarea.FechaCreacion <br />
         Fecha fin: @ViewBag.tarea.FechaFin <br />
         Prioridad: @ViewBag.tarea.Prioridad <br />
-        Completada: @ViewBag.tarea.Completada <br />
+        Completada: @if (Convert.ToBoolean(ViewBag.tarea.Completada))
+                         {
+                        <span class="glyphicon glyphicon-ok"></span>
+            } else {
+                <span class="glyphicon glyphicon-remove"></span>
+                }
+    <br />
     </div>
 </div>
 
