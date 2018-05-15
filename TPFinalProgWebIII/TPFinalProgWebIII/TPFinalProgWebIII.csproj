@@ -185,6 +185,7 @@
     <Compile Include="Models\ServiceImp\UsuarioServiceImp.cs" />
     <Compile Include="Models\Service\IGeneralService.cs" />
     <Compile Include="Models\Service\IUsuarioService.cs" />
+    <Compile Include="Models\View\CarpetaVal.cs" />
     <Compile Include="Models\View\Login.cs" />
     <Compile Include="Models\View\Registro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

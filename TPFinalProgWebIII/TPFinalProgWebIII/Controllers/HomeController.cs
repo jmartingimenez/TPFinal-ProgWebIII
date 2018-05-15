@@ -18,9 +18,24 @@ namespace TPFinalProgWebIII.Controllers
         PW3TP_20181C_TareasEntities db = new PW3TP_20181C_TareasEntities();
         // GET: Home
         public ActionResult Index()
-        { 
-          
+        {
+            int id; 
+
+            if (Session["IdUsuario"] == null)
                 return View();
+            else {
+
+                int.TryParse(Session["IdUsuario"].ToString(), out id);
+                Usuario usuario = db.Usuario.Single(x => x.IdUsuario == id);
+
+                List<Carpeta> carpetas = usuario.Carpeta.OrderBy(x => x.Nombre).ToList();
+                List<Tarea> tareas = usuario.Tarea.OrderBy(x => x.Prioridad).ThenBy(x => x.FechaFin).ToList();
+
+                ViewBag.carpetas = carpetas;
+                ViewBag.tareas = tareas;
+
+                return View("Index", ViewBag);
+            }
         }
 
         public ActionResult Login()
@@ -33,6 +48,8 @@ namespace TPFinalProgWebIII.Controllers
         [ActionName("Procesar-Login")]
         public ActionResult Login(Login login)
         {
+
+            Usuario usuario = new Usuario();
             
             /*Si los datos no son validos o estan incompletos se vuelve a la vista 
              y se muestran los errores*/
@@ -45,24 +62,28 @@ namespace TPFinalProgWebIII.Controllers
 
                 if (db.Usuario.Any(x => x.Email == login.Email && x.Contrasenia == login.Contrasenia)){
 
-// probando validacion con los servicios y repository                
-//  UsuarioServiceImp usi = new UsuarioServiceImp();
+                    usuario = db.Usuario.Single(x => x.Email == login.Email && x.Contrasenia == login.Contrasenia);
+                    /* 
+                         UsuarioServiceImp usi = new UsuarioServiceImp();
 
-//  if (usi.Login(login))
-//   {
+                         if (usi.Login(login))
+                         {*/
+
                     //probando la sesion
-                    Session["Nombre"] = login.Email;
+                    Session["IdUsuario"] = usuario.IdUsuario;
+                    Session["Nombre"] = usuario.Email;
 
+                    Console.WriteLine(Session["IdUsuario"]);
                     /*Aca, es cuando los datos son correctos. Ahora se debería comprobar 
                      si existe el usuario y demas yerbas. Simplemente estoy mandando 
                      este mensaje a la vista para que se vea la diferencia.*/
-                    ViewData["MensajeOK"] = "Todo OK. Ahora habría que ir a la BDD.";
+                    ViewData["MensajeOK"] = "Todo OK. Ahora habría que ir a la BDD";
 
                     /*Si se tildo la opción de recordar, aca es donde se gestionaría la cookie*/
                     if (login.Recordarme)
                         ViewData["MensajeOK"] = ViewData["MensajeOK"] + " Recordado!!";
 
-                    return View("Login");
+                    return RedirectToAction("Index");
 //   }
 
                }
@@ -180,7 +201,7 @@ namespace TPFinalProgWebIII.Controllers
             }
             catch(Exception e)
             {
-                Debug.Write("\n\t\tALGUN ERROR, VER QUE PASA\n\n");
+                Debug.Write("\n\t\tALGUN ERROR, VER QUE PASA\n\n" + e.StackTrace);
                 throw;
             }
         }

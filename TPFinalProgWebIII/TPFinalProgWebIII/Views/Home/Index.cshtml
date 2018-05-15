@@ -1,30 +1,68 @@
-﻿@{ 
+﻿@{
     ViewBag.Titulo = "Index";
 }
-<div class="jumbotron">
-        
-         <div class="row">
-             <div class="col-lg-6">
-              
-                 <h1>MyFolder</h1>
 
-                <p>La mejor manera de organizar tu vida.<br />
-                  <!---  -Contiene un cuadro de login y un link de registraci&oacute;n --><br />
-                </p>
+@{
+    //PREGUNTO SI LA VARIABLE DE SESION ESTA DEFINIDA, POR LO CUAL ESTA LOGUEADO
+    if (Session["IdUsuario"] == null)
+    {
 
-                <p>Crea y organiza tus tareas de una forma rapida y eficiente.</p>
+        <div class="jumbotron">
 
-                 <p><a class="btn btn-primary btn-lg" href="/Home/Registracion" role="button">Registrate</a></p>
-            </div> 
 
-             <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-6">
 
-                 <div class="container">
-                     <img src="~/Content/img/campu5.png" class="compu_img"/>
-                 </div>
+                    <h1>MyFolder</h1>
 
-             </div>
+                    <p>
+                        La mejor manera de organizar tu vida.<br />
+                        <!---  -Contiene un cuadro de login y un link de registraci&oacute;n --><br />
+                    </p>
 
+                    <p>Crea y organiza tus tareas de una forma rapida y eficiente.</p>
+
+                    <p><a class="btn btn-primary btn-lg" href="/Home/Registracion" role="button">Registrate</a></p>
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="container">
+                        <img src="~/Content/img/campu5.png" class="compu_img" />
+                    </div>
+
+                </div>
+
+            </div>
         </div>
-</div>
 
+    }
+    else
+    {
+
+        <div class="d-flex flex-row">
+            <div class="flex-column col-md-4">
+                <h3>Carpetas</h3>
+                @foreach (Carpeta x in ViewBag.carpetas)
+                {
+                    <div class="p-2 clearfix lineacarpeta">
+                        <a href="/carpetas/tareas/@x.IdCarpeta"><img class="iconfolder img-responsive pull-left" src="~/Content/img/CarpetaEjemplo.png" /> <span class="pull-left ">@x.Nombre</span></a>
+                    </div>
+                }
+
+            </div>
+            <div class="flex-column col-md-4"></div>
+            <div class="flex-column col-md-4">
+                <h3>Tareas</h3>
+                @foreach (Tarea x in ViewBag.tareas)
+    {
+            <div class="p-2 clearfix lineacarpeta">
+                <div class="p-2">@x.FechaFin - @x.Nombre</div>
+            </div>
+}
+            </div>
+        </div>
+
+
+    }
+}

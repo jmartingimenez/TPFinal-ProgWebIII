@@ -15,8 +15,7 @@ namespace TPFinalProgWebIII
     
     public partial class PW3TP_20181C_TareasEntities : DbContext
     {
-        public PW3TP_20181C_TareasEntities()
-            : base("name=PW3TP_20181C_TareasEntities")
+        public PW3TP_20181C_TareasEntities(): base("name=PW3TP_20181C_TareasEntities")
         {
         }
     

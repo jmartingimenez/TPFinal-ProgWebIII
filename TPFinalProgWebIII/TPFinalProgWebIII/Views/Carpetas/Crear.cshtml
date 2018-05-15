@@ -1,1 +1,24 @@
-﻿<h2>Carpetas - Crear</h2>
+﻿@model TPFinalProgWebIII.Models.View.CarpetaVal
+<h2>Carpetas - Crear</h2>
+
+<div class="formulario">
+    <div class="form-group">
+        @using (@Html.BeginForm("Crear-Carpeta", "Carpetas", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.LabelFor(model => model.Nombre)<br />
+        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })<br />
+        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })<br />
+
+        @Html.LabelFor(model => model.Descripcion)<br />
+        @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" })<br />
+        @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })<br />
+
+        <div class="btn-login-registro">
+            <input type="submit" value="Crear" class="btn btn-primary" /><br />
+        </div>
+}
+    </div>
+
+</div>

@@ -14,6 +14,11 @@ namespace TPFinalProgWebIII
     
     public partial class Carpeta
     {
+        public Carpeta()
+        {
+            this.FechaCreacion = DateTime.Now;
+        }
+
         public int IdCarpeta { get; set; }
         public Nullable<int> IdUsuario { get; set; }
         public string Nombre { get; set; }
