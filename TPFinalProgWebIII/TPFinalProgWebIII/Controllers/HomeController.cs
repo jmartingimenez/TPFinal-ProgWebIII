@@ -21,7 +21,7 @@ namespace TPFinalProgWebIII.Controllers
         {
             int id; 
 
-            if (Session["IdUsuario"] == null)
+            if (Session["Nombre"].Equals(String.Empty))
                 return View();
             else {
 

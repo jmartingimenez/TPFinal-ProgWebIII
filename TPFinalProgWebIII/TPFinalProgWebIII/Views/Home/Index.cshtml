@@ -4,7 +4,7 @@
 
 @{
     //PREGUNTO SI LA VARIABLE DE SESION ESTA DEFINIDA, POR LO CUAL ESTA LOGUEADO
-    if (Session["IdUsuario"] == null)
+    if (Session["Nombre"].Equals(String.Empty))
     {
 
         <div class="jumbotron">
