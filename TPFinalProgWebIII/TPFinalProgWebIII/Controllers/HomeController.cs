@@ -165,7 +165,6 @@ namespace TPFinalProgWebIII.Controllers
                 usuario = CrearUsuario(new Usuario(), registro);
                 mensaje = "Nuevo registro agregado a la BDD.";
                 db.Usuario.Add(usuario);
-                db.Entry(usuario).State = System.Data.EntityState.Added;
             }
             else                    
             {
@@ -174,7 +173,6 @@ namespace TPFinalProgWebIII.Controllers
 
                 usuario = CrearUsuario(usuario, registro);
                 mensaje = "Se actualizo un usuario viejo.";
-                db.Entry(usuario).State = System.Data.EntityState.Modified;
             }
 
             /*El catch lo encontre en SO. Te imprime errores de 
