@@ -16,17 +16,33 @@ namespace TPFinalProgWebIII.Controllers
     {
 
         PW3TP_20181C_TareasEntities db = new PW3TP_20181C_TareasEntities();
+
+        private IUsuarioService _usuarioService;
+        private IGeneralService<Usuario> _generalService;
+
+        public HomeController()
+        {
+        }
+
+        public HomeController(IUsuarioService usuarioService, IGeneralService<Usuario> generalService)
+        {
+            _usuarioService = usuarioService;
+            _generalService = generalService;
+        }
+
+
+
         // GET: Home
         public ActionResult Index()
         {
-            int id; 
+            int id;
 
             if (Session["Nombre"].Equals(String.Empty))
                 return View();
             else {
 
                 int.TryParse(Session["IdUsuario"].ToString(), out id);
-                Usuario usuario = db.Usuario.Single(x => x.IdUsuario == id);
+                Usuario usuario = _generalService.Get(id);
 
                 List<Carpeta> carpetas = usuario.Carpeta.OrderBy(x => x.Nombre).ToList();
                 List<Tarea> tareas = usuario.Tarea.OrderBy(x => x.Prioridad).ThenBy(x => x.FechaFin).ToList();
@@ -50,20 +66,19 @@ namespace TPFinalProgWebIII.Controllers
         {
 
             Usuario usuario = new Usuario();
-            
+
             /*Si los datos no son validos o estan incompletos se vuelve a la vista 
              y se muestran los errores*/
-             
+
             if (!ModelState.IsValid)
                 return View("Login", login);
             else
             {
-                /*FALTARIA PASAR LA CONSULTA A SERVICIOS*/
 
-                if (db.Usuario.Any(x => x.Email == login.Email && x.Contrasenia == login.Contrasenia)){
+                usuario = _usuarioService.Login(login);
 
-                    usuario = db.Usuario.Single(x => x.Email == login.Email && x.Contrasenia == login.Contrasenia);
-
+                if (usuario != null){
+                    
                     //No permitiendo logearse a un user inactivo
                     if(usuario.Activo == 0)
                     {

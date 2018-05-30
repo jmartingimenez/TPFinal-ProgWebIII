@@ -8,14 +8,14 @@ namespace TPFinalProgWebIII.Models.Repository
 {
     public interface IGeneralRepository<T>
     {
-        T Crear(T a);
+        T Create(T a);
 
-        T Modificar(T a);
+        T Update(T a);
 
-        void Eliminar(T a);
+        void Delete(T a);
 
-        List<T> Listar();
+        List<T> GetAll();
 
-        T BuscarPorId(int id);
+        T Get<TKey>(TKey id);
     }
 }

@@ -9,6 +9,6 @@ namespace TPFinalProgWebIII.Models.Service
 {
     public interface IUsuarioService
     {
-        Boolean Login(Login login);
+        Usuario Login(Login login);
     }
 }

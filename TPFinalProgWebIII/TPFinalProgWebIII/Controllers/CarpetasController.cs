@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TPFinalProgWebIII.Models.Service;
 using TPFinalProgWebIII.Models.View;
 
 namespace TPFinalProgWebIII.Controllers
@@ -12,6 +13,16 @@ namespace TPFinalProgWebIII.Controllers
 
         PW3TP_20181C_TareasEntities db = new PW3TP_20181C_TareasEntities();
         // GET: Carpetas
+
+        private IUsuarioService _usuarioService;
+        private IGeneralService<Carpeta> _generalService;
+
+        public CarpetasController(IUsuarioService usuarioService, IGeneralService<Carpeta> generalService)
+        {
+            _usuarioService = usuarioService;
+            _generalService = generalService;
+        }
+
         public ActionResult Index()
         {
             int id;
@@ -25,6 +36,7 @@ namespace TPFinalProgWebIII.Controllers
 
         public ActionResult Crear()
         {
+
             return View();
         }
 
@@ -48,10 +60,8 @@ namespace TPFinalProgWebIII.Controllers
                 carpeta.Descripcion = carpetaVal.Descripcion;
                 carpeta.Usuario = db.Usuario.Find(id);
 
-                db.Carpeta.Add(carpeta);
-
-                db.SaveChanges();
-
+                _generalService.Create(carpeta);
+             
                 return RedirectToAction("Index");
             }
             

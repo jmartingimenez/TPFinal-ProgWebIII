@@ -16,6 +16,10 @@ namespace TPFinalProgWebIII
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            AreaRegistration.RegisterAllAreas();
+
+            Bootstrapper.Initialise();
         }
 
         protected void Session_Start(Object sender, EventArgs e)

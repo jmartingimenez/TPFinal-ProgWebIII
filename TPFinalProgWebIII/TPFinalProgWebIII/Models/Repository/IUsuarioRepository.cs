@@ -9,7 +9,7 @@ namespace TPFinalProgWebIII.Models.Repository
 {
     public interface IUsuarioRepository
     {
-        Boolean Login(Login login);
+        Usuario Login(Login login);
 
     }
 }

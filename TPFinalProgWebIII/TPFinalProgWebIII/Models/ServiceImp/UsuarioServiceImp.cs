@@ -9,53 +9,48 @@ using TPFinalProgWebIII.Models.View;
 
 namespace TPFinalProgWebIII.Models.ServiceImp
 {
-    public class UsuarioServiceImp : IGeneralService<Usuario>, IUsuarioService
+    public class UsuarioServiceImp : IUsuarioService
     {
-        private IGeneralRepository<Usuario> _generalRepository;
-        private IUsuarioService _usuarioService;
+        private readonly IGeneralRepository<Usuario> _generalRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
         
         //para probar el login.
         public UsuarioServiceImp() { }
 
-
-        public UsuarioServiceImp(IGeneralRepository<Usuario> generalRepository, IUsuarioService usuarioService)
+        public UsuarioServiceImp(IGeneralRepository<Usuario> generalRepository, IUsuarioRepository usuarioRepository)
         {
             _generalRepository = generalRepository;
-            _usuarioService = usuarioService;
+            _usuarioRepository = usuarioRepository;
         }
 
-        public Usuario Crear(Usuario a)
+        public Usuario Create(Usuario a)
         {
-           return _generalRepository.Crear(a);
+            return _generalRepository.Create(a);
         }
 
-        public void Eliminar(Usuario a)
+        public void Delete(Usuario a)
         {
-            _generalRepository.Crear(a);
+            throw new NotImplementedException();
         }
 
-        public List<Usuario> Listar()
+        public Usuario Get<TKey>(TKey id)
         {
-            return _generalRepository.Listar();
+            throw new NotImplementedException();
         }
 
-        public Usuario Modificar(Usuario a)
+        public List<Usuario> GetAll()
         {
-            return _generalRepository.Modificar(a);
+            throw new NotImplementedException();
         }
 
-        public Usuario BuscarPorId(int id)
+        public Usuario Login(Login login)
         {
-            return _generalRepository.BuscarPorId(id);
+            return _usuarioRepository.Login(login);
         }
 
-        public bool Login(Login login)
+        public Usuario Update(Usuario a)
         {
-
-            //UsuarioRepositoryImp uri = new UsuarioRepositoryImp();
-           // return uri.Login(login);
-
-            return _usuarioService.Login(login);
+            throw new NotImplementedException();
         }
     }
 }
