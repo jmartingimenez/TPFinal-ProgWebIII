@@ -52,5 +52,15 @@ namespace TPFinalProgWebIII.Models.ServiceImp
         {
             throw new NotImplementedException();
         }
+
+        public Usuario FindByEmail(string email)
+        {
+            return _usuarioRepository.FindByEmail(email);
+        }
+
+        public Usuario BuildUsuario(Usuario usuario, Registro registro)
+        {
+            return _usuarioRepository.BuildUsuario(usuario, registro);
+        }
     }
 }

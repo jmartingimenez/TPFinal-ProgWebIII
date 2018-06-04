@@ -10,6 +10,7 @@ namespace TPFinalProgWebIII.Models.Repository
     public interface IUsuarioRepository
     {
         Usuario Login(Login login);
-
+        Usuario FindByEmail(string email);
+        Usuario BuildUsuario(Usuario usuario, Registro registro);
     }
 }

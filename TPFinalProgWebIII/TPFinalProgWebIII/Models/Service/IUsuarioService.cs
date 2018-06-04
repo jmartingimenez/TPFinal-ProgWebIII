@@ -10,5 +10,7 @@ namespace TPFinalProgWebIII.Models.Service
     public interface IUsuarioService
     {
         Usuario Login(Login login);
+        Usuario FindByEmail(string email);
+        Usuario BuildUsuario(Usuario usuario, Registro registro);
     }
 }
