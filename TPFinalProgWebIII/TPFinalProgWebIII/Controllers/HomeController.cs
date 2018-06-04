@@ -125,11 +125,10 @@ namespace TPFinalProgWebIII.Controllers
         [ActionName("Procesar-Registro")]
         public ActionResult Registracion(Registro registro)
         {
-            if (!ModelState.IsValid) return View("Registracion", registro);
+            if (!ModelState.IsValid)
+                return View("Registracion", registro);
 
-            //Lo que esta aca, pasarlo luego a servicios
-            ViewData["MensajeOK"] = this.GestionRegistro(registro);
-
+            GestionRegistro(registro);
             return View("Registracion");
         }
 
@@ -144,29 +143,32 @@ namespace TPFinalProgWebIII.Controllers
         }
 
         /*===========================================================
-         * ESTO SE TIENE QUE SACAR DE ACA LUEGO, PASARLO A SERVICIOS
+         * ==================MÉTODO(S) PRIVADO(S)====================
          ===========================================================*/        
 
-        private string GestionRegistro(Registro registro)
-        {
-            string mensaje = "El mail se encuentra en uso.";
+        private void GestionRegistro(Registro registro)
+        {            
             Usuario usuario = _usuarioService.FindByEmail(registro.Email);
 
+            //Si el mail no esta en uso
             if (usuario == null)    
             {
                 usuario = _usuarioService.BuildUsuario(new Usuario(), registro);
-                mensaje = "Nuevo registro agregado a la BDD.";
+                ViewData["MensajeOK"] = "Nuevo registro agregado a la BDD";
                 _generalService.Create(usuario);
             }
-            else                    
+            else    //Si esta en uso...
             {
-                if (usuario.Activo == 1)
-                    return mensaje;
-
-                usuario = _usuarioService.BuildUsuario(usuario, registro);
-                _generalService.Update(usuario);
-                mensaje = "Se actualizo un usuario viejo.";
-            }
-            return mensaje;
+                //... y el usuario no es activo...
+                if (usuario.Activo == 0)
+                {
+                    usuario = _usuarioService.BuildUsuario(usuario, registro);
+                    _generalService.Update(usuario);
+                    ViewData["MensajeOK"] = "Se actualizo un usuario viejo";
+                }
+                //... y el usuario es activo...
+                else ViewData["MensajeOK"] = "El mail se encuentra en uso";
+            }          
         }
-    }}
+    }
+}
