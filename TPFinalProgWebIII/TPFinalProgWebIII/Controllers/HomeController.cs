@@ -64,17 +64,12 @@ namespace TPFinalProgWebIII.Controllers
         [ActionName("Procesar-Login")]
         public ActionResult Login(Login login)
         {
-
             Usuario usuario = new Usuario();
-
-            /*Si los datos no son validos o estan incompletos se vuelve a la vista 
-             y se muestran los errores*/
 
             if (!ModelState.IsValid)
                 return View("Login", login);
             else
             {
-
                 usuario = _usuarioService.Login(login);
 
                 if (usuario != null){
@@ -86,20 +81,12 @@ namespace TPFinalProgWebIII.Controllers
                         return View("Login");
                     }
                     
-                    //probando la sesion
+                    //Seteando la sesión
                     Session["IdUsuario"] = usuario.IdUsuario;
                     Session["Nombre"] = usuario.Email;
 
-                    Debug.WriteLine(Session["IdUsuario"]);
-
-                    /*Creando una cookie
-                     - Pendiente revisar que exista
-                     - Pendiente encriptarla*/
                     if (login.Recordarme)
-                    {
-                        Response.Cookies["Usuario"]["Mail"] = login.Email;
-                        Response.Cookies["Usuario"].Expires = DateTime.Now.AddDays(90);
-                    }
+                        CookieHandler(login.Email);
 
                     return RedirectToAction("Index");
                }
@@ -128,7 +115,7 @@ namespace TPFinalProgWebIII.Controllers
             if (!ModelState.IsValid)
                 return View("Registracion", registro);
 
-            GestionRegistro(registro);
+            RegistroHandler(registro);
             return View("Registracion");
         }
 
@@ -146,7 +133,7 @@ namespace TPFinalProgWebIII.Controllers
          * ==================MÉTODO(S) PRIVADO(S)====================
          ===========================================================*/        
 
-        private void GestionRegistro(Registro registro)
+        private void RegistroHandler(Registro registro)
         {            
             Usuario usuario = _usuarioService.FindByEmail(registro.Email);
 
@@ -169,6 +156,19 @@ namespace TPFinalProgWebIII.Controllers
                 //... y el usuario es activo...
                 else ViewData["MensajeOK"] = "El mail se encuentra en uso";
             }          
+        }
+
+        /*Creando una cookie
+         - Pendiente encriptarla, probablemente se pueda hacer 
+         una clase con métodos para encriptar/desencriptar luego. 
+         Dejo esto aca para que quede a la vista*/
+        private void CookieHandler(string email)
+        {
+            if (Request.Cookies["Usuario"] == null)
+            {
+                Response.Cookies["Usuario"]["Mail"] = email;
+                Response.Cookies["Usuario"].Expires = DateTime.Now.AddDays(90);
+            }
         }
     }
 }
