@@ -36,9 +36,28 @@ namespace TPFinalProgWebIII.Models.RepositoryImp
         /*Ver luego como generar/acomodar esto, si se manda por 
          * mail, etc..
          *Lo pongo de manera simple para que quede a la vista */
-         private static string NuevoCodigoDeActivacion()
+     /*    private static string NuevoCodigoDeActivacion()
         {
             return "RANDOM123";
+        }*/
+
+        private static Random random = new Random();
+
+        public static string NuevoCodigoDeActivacion()
+        {
+         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+            return new string(Enumerable.Repeat(chars, 8)
+                .Select(s => s[random.Next(s.Length)]).ToArray())+"-"+
+                 new string(Enumerable.Repeat(chars, 4)
+                .Select(s => s[random.Next(s.Length)]).ToArray()) + "-" +
+                 new string(Enumerable.Repeat(chars, 4)
+                .Select(s => s[random.Next(s.Length)]).ToArray()) + "-" +
+                 new string(Enumerable.Repeat(chars, 4)
+                .Select(s => s[random.Next(s.Length)]).ToArray()) + "-" +
+                 new string(Enumerable.Repeat(chars, 12)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+            
         }
     }
 }
