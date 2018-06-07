@@ -56,6 +56,10 @@ namespace TPFinalProgWebIII.Controllers
 
         public ActionResult Login()
         {
+            //Si ya estas logeado vas al index
+            if (!Session["Nombre"].Equals(String.Empty))
+                return RedirectToAction("Index");
+
             return View();
         }
 
@@ -88,6 +92,13 @@ namespace TPFinalProgWebIII.Controllers
                     if (login.Recordarme)
                         CookieHandler(login.Email);
 
+                    /*Si se intento entrar a una URL que 
+                     requiere logearse, te devuelvo a esa. Si no, 
+                     al Index*/
+                    string destino = HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["ReturnUrl"];
+                    if (destino != null)
+                        return Redirect(destino);
+
                     return RedirectToAction("Index");
                }
                 else
@@ -101,6 +112,10 @@ namespace TPFinalProgWebIII.Controllers
 
         public ActionResult Registracion()
         {
+            //Si ya estas logeado vas al index
+            if (!Session["Nombre"].Equals(String.Empty))
+                return RedirectToAction("Index");
+
             return View();
         }
 
@@ -122,11 +137,9 @@ namespace TPFinalProgWebIII.Controllers
         public ActionResult Logout()
         {
             if (!Session["Nombre"].Equals(String.Empty))
-            {
                 Session["Nombre"] = String.Empty;
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
+
+            return RedirectToAction("Index", "Home");
         }
 
         /*===========================================================
