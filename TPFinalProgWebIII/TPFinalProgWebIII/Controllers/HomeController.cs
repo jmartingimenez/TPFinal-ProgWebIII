@@ -81,13 +81,14 @@ namespace TPFinalProgWebIII.Controllers
                     //No permitiendo logearse a un user inactivo
                     if(usuario.Activo == 0)
                     {
-                        ViewData["MensajeOK"] = "Necesitas activar tu cuenta primero.";
+                        ViewBag.msg = "Necesitas activar tu cuenta primero.";
+                        
                         return View("Login");
                     }
                     
                     //Seteando la sesión
                     Session["IdUsuario"] = usuario.IdUsuario;
-                    Session["Nombre"] = usuario.Email;
+                    Session["Nombre"] = usuario.Nombre;
 
                     if (login.Recordarme)
                         CookieHandler(login.Email);
@@ -203,10 +204,11 @@ namespace TPFinalProgWebIII.Controllers
            if( _usuarioService.ActivateAccount(new Usuario(),cda)!=null)
             {
                 Usuario user = _usuarioService.ActivateAccount(new Usuario(), cda);
-
+                
                 //falla al actualizar
                 _generalService.Update(user);
-                ViewBag.p = user.Nombre+user.FechaActivacion+user.Activo;
+              
+                ViewBag.p = user.Nombre+user.FechaActivacion+user.Activo+user.IdUsuario+user.Apellido+user.Email+user.FechaRegistracion;
             }
           
             return View();

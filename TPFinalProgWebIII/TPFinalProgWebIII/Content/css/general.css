@@ -2,6 +2,8 @@
 @import url(https://fonts.googleapis.com/css?family=Overlock:700);
   body {
   	font-family: Overlock;
+      color:black !important;
+
   }
   
     html, body 
@@ -17,6 +19,8 @@
     margin-top:50px;
     display:flex;
     justify-content:center;
+    padding-left:10%;
+    padding-right:10%;
 }
 
 .form-control {
@@ -34,3 +38,22 @@ div>h2
 }
 
 
+/*
+li>a
+{
+    color:black !important;
+}
+
+li>a:hover
+{
+    color:black !important;
+    background-color:gainsboro !important;
+}*/
+
+.img-n
+{
+    height:29px;
+     margin-top:9px;
+    margin-left:15px;
+    margin-right:5px;
+}

@@ -6,7 +6,7 @@
     //PREGUNTO SI LA VARIABLE DE SESION ESTA DEFINIDA, POR LO CUAL ESTA LOGUEADO
     if (Session["Nombre"].Equals(String.Empty))
     {
-
+        <div class="centradoGeneral">
         <div class="jumbotron">
 
 
@@ -17,7 +17,7 @@
 
                     <p>
                         La mejor manera de organizar tu vida.<br />
-                        <!---  -Contiene un cuadro de login y un link de registraci&oacute;n --><br />
+                        <!---  -Contiene un cuadro de login y un link de registraci&oacute;n -->
                     </p>
 
                     <p>Crea y organiza tus tareas de una forma rapida y eficiente.</p>
@@ -35,33 +35,12 @@
 
             </div>
         </div>
-
+            </div>
     }
     else
     {
 
-        <div class="d-flex flex-row">
-            <div class="flex-column col-md-4">
-                <h3>Carpetas</h3>
-                @foreach (Carpeta x in ViewBag.carpetas)
-                {
-                    <div class="p-2 clearfix lineacarpeta">
-                        <a href="/carpetas/tareas/@x.IdCarpeta"><img class="iconfolder img-responsive pull-left" src="~/Content/img/CarpetaEjemplo.png" /> <span class="pull-left ">@x.Nombre</span></a>
-                    </div>
-                }
-
-            </div>
-            <div class="flex-column col-md-4"></div>
-            <div class="flex-column col-md-4">
-                <h3>Tareas</h3>
-                @foreach (Tarea x in ViewBag.tareas)
-                {   
-            <div class="p-2 clearfix lineacarpeta">
-                <div class="p-2">@x.FechaFin - @x.Nombre</div>
-            </div>
-                }
-            </div>
-        </div>
+        @Html.Partial("Partial_Home_usuario_Logueado");
 
 
     }

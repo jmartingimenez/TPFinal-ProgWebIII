@@ -1,0 +1,18 @@
+﻿.carpetas-left
+{
+  font-size:15px;
+
+}
+.carpetas-flex
+{
+    display:flex;
+}
+.carpetas-flex:hover
+{
+   background-color:lavender;
+}
+
+.pull-left
+{
+    color:black;
+}

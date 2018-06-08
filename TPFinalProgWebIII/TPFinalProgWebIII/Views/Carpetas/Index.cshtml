@@ -1,17 +1,24 @@
-﻿<h2>Mis carpetas</h2>
+﻿
+<div class="centradoGeneral">
+<div class="panel panel-default ">
+    <div class="panel-heading titulo"><h3>Mis Carpetas</h3></div>
+    <div class="panel-body">
+        <div class="cuadro_carpetas">
 
+            @foreach (Carpeta x in ViewBag.carpetas)
+            {
 
-<div class="cuadro_carpetas">
-
-
-    @foreach (Carpeta x in ViewBag.carpetas)
-    {
-        <div class="contenedor_carpetas">
-            <a href="/carpetas/tareas/@x.IdCarpeta">
-                <img src="~/Content/img/CarpetaEjemplo.png" class="carpeta" />
-                <p>@x.Nombre</p>
-            </a>
-        </div>
-    }
-
+                <div class="contenedor_carpetas">
+                    <a href="/carpetas/tareas/@x.IdCarpeta">
+                        <img src="~/Content/img/CarpetaEjemplo.png" class="carpeta" />
+                        <p>@x.Nombre</p>
+                    </a>
+                </div>
+            }
+            <div class="contenedor_carpetas">
+                <a href="/Carpetas/Crear"> <img src="~/Content/img/FolderBlack.png" class="carpeta" /> Crear Carpeta  </a>
+            </div>
+            </div>
+    </div>
+</div>
 </div>

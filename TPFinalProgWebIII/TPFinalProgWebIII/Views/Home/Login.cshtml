@@ -35,8 +35,27 @@
         <div class="btn-login-registro">
         <input type="submit" value="Iniciar sesi&oacute;n" class="btn btn-primary"/>
         </div>
-        @ViewData["MensajeOK"]
-        
+
+        if (ViewData["MensajeOK"] != null)
+        {
+            <br/>
+                <div class="alert alert-danger centermsg" role="alert">
+                    @ViewData["MensajeOK"]
+                </div>
+
+        }
+
+        if (ViewBag.msg != null)
+        {
+            <br />
+            <div class="alert alert-info centermsg" role="alert">
+                @ViewBag.msg 
+            </div>
+          
+            <div class="btn-login-registro">
+            <a href="/home/ActivarCuenta" class="btn btn-success">Activar cuenta</a>
+            </div>
+        }
     }
             </div>
     </div>

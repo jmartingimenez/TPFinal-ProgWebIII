@@ -92,6 +92,7 @@ namespace TPFinalProgWebIII.Models.RepositoryImp
             user=db.Usuario.SingleOrDefault(x => x.CodigoActivacion==cda.CodigoActivacion && x.Email==cda.Email);
             user.Activo = 1;
             user.FechaActivacion = DateTime.Now;
+           
             return user;
         }
     }

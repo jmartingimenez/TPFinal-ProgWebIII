@@ -1,0 +1,44 @@
+﻿
+<div class="d-flex flex-row">
+    <div class="flex-column col-md-2 carpetas-left">
+       
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3>Mis Carpetas</h3></div>
+            <div class="panel-body">
+                @foreach (Carpeta x in ViewBag.carpetas)
+                {
+                    <div class="carpetas-flex">
+                        <a href="/carpetas/tareas/@x.IdCarpeta"><img class="iconfolder img-responsive pull-left" src="~/Content/img/CarpetaEjemplo.png" /> <span class="pull-left ">@x.Nombre</span></a>
+                    </div>
+                    
+                }
+            </div>
+        </div>
+       
+
+    </div>
+    <div class="flex-column col-md-10">
+      
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3>Tareas</h3></div>
+            <div class="panel-body">
+               
+                <table class="table">
+
+                    @foreach (Tarea x in ViewBag.tareas)
+                    {
+                        <tr>
+                            <td>@x.Nombre</td>
+                            <td>@x.FechaFin</td>
+
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+        </div>
+
+        
+    </div>
+</div>
