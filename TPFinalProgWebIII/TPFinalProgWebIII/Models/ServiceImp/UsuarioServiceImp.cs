@@ -62,5 +62,10 @@ namespace TPFinalProgWebIII.Models.ServiceImp
         {
             return _usuarioRepository.BuildUsuario(usuario, registro);
         }
+
+        public Usuario ActivateAccount(Usuario user,CodigoDeActivacion cda)
+        {
+            return _usuarioRepository.ActivateAccount(user,cda);
+        }
     }
 }

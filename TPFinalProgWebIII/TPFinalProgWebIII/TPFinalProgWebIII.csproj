@@ -211,6 +211,7 @@
     <Compile Include="Models\Service\IGeneralService.cs" />
     <Compile Include="Models\Service\IUsuarioService.cs" />
     <Compile Include="Models\View\CarpetaVal.cs" />
+    <Compile Include="Models\View\CodigoDeActivacion.cs" />
     <Compile Include="Models\View\Login.cs" />
     <Compile Include="Models\View\Registro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -249,6 +250,7 @@
     <Content Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Home\ActivarCuenta.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

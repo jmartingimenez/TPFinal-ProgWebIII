@@ -154,7 +154,7 @@ namespace TPFinalProgWebIII.Controllers
             if (usuario == null)    
             {
                 usuario = _usuarioService.BuildUsuario(new Usuario(), registro);
-                ViewData["MensajeOK"] = "Nuevo registro agregado a la BDD";
+                ViewData["MensajeOK"] = "Se le ha enviado un mail con su clave de activación";
                 _generalService.Create(usuario);
             }
             else    //Si esta en uso...
@@ -182,6 +182,34 @@ namespace TPFinalProgWebIII.Controllers
                 Response.Cookies["Usuario"]["Mail"] = email;
                 Response.Cookies["Usuario"].Expires = DateTime.Now.AddDays(90);
             }
+        }
+
+
+
+        public ActionResult ActivarCuenta()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ActivarCuenta(CodigoDeActivacion cda)
+        {
+            ViewBag.p = "entro";
+            if (!ModelState.IsValid)
+            {
+                ViewBag.p = "fallo";
+                return View(cda);
+            }
+
+           if( _usuarioService.ActivateAccount(new Usuario(),cda)!=null)
+            {
+                Usuario user = _usuarioService.ActivateAccount(new Usuario(), cda);
+
+                //falla al actualizar
+                _generalService.Update(user);
+                ViewBag.p = user.Nombre+user.FechaActivacion+user.Activo;
+            }
+          
+            return View();
         }
     }
 }

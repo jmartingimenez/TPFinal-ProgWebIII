@@ -1,0 +1,26 @@
+﻿@model TPFinalProgWebIII.Models.View.CodigoDeActivacion
+@{
+    ViewBag.Title = "ActivarCuenta";
+}
+
+<h2>Ingrese su codigo de activacion</h2>
+
+@using (@Html.BeginForm("ActivarCuenta", "Home", FormMethod.Post))
+{
+   
+      @Html.LabelFor(model=>model.CodigoActivacion)
+        @Html.TextBoxFor(model => model.CodigoActivacion, new { @placeholder = "Ej:11111111-1111-1111-1111-111111111111", @class = "form-control" })<br />
+        @Html.ValidationMessageFor(model => model.CodigoActivacion, "", new { @class = "text-danger" })<br />
+
+        @Html.LabelFor(model => model.Email)
+        @Html.TextBoxFor(model => model.Email, new { @placeholder = "ejemplo@hotmail.com", @class = "form-control" })<br />
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br />
+
+
+        <br />
+        <div class="btn-login-registro">
+            <input type="submit" value="Verificar" class="btn btn-primary" />
+        </div>
+
+        @ViewBag.p
+}
