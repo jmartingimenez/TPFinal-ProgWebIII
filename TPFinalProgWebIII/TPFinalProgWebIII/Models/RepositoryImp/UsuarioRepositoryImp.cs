@@ -67,26 +67,30 @@ namespace TPFinalProgWebIII.Models.RepositoryImp
             MailMessage email = new MailMessage();
 
             email.To.Add(new MailAddress(registro.Email));
-            email.From = new MailAddress("nuestro email");
+            email.From = new MailAddress("pw3mailsample@gmail.com");
             email.Subject = "Asunto (Validar Cuenta en MyFolder)";
             email.Body = "Usuario: "+registro.Nombre+"  Codigo de activacion: " + key + "   active su cuenta aquí: http://localhost:49525/Home/ActivarCuenta";
             email.IsBodyHtml = true;
             email.Priority = MailPriority.Normal;
 
             SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.live.com";
-            smtp.Port = 25;
+            //smtp.Host = "smtp.live.com";
+            //smtp.Port = 25;
+
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
 
             smtp.EnableSsl = true;
             smtp.UseDefaultCredentials = false;
             
-            smtp.Credentials = new NetworkCredential(email.From.Address, "nuestra contraseña");
+            smtp.Credentials = new NetworkCredential(email.From.Address, "jonimauromarcos");
 
 
             smtp.Send(email);
             email.Dispose();
         }
 
+        // BORRAR DESPUES; YA NO SE USA
         public Usuario ActivateAccount(Usuario user,CodigoDeActivacion cda)
         {
             user=db.Usuario.SingleOrDefault(x => x.CodigoActivacion==cda.CodigoActivacion && x.Email==cda.Email);

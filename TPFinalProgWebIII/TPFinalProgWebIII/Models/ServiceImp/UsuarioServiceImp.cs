@@ -28,29 +28,9 @@ namespace TPFinalProgWebIII.Models.ServiceImp
             return _generalRepository.Create(a);
         }
 
-        public void Delete(Usuario a)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Usuario Get<TKey>(TKey id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Usuario> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public Usuario Login(Login login)
         {
             return _usuarioRepository.Login(login);
-        }
-
-        public Usuario Update(Usuario a)
-        {
-            throw new NotImplementedException();
         }
 
         public Usuario FindByEmail(string email)
@@ -63,9 +43,20 @@ namespace TPFinalProgWebIII.Models.ServiceImp
             return _usuarioRepository.BuildUsuario(usuario, registro);
         }
 
-        public Usuario ActivateAccount(Usuario user,CodigoDeActivacion cda)
+        public Usuario ActivateAccount(CodigoDeActivacion cda)
         {
-            return _usuarioRepository.ActivateAccount(user,cda);
+            Usuario usuario = _usuarioRepository.FindByEmail(cda.Email);
+            
+            if(usuario.CodigoActivacion == cda.CodigoActivacion)
+            {
+                
+                usuario.Activo = 1;
+                usuario.FechaActivacion = DateTime.Now;
+
+                _generalRepository.Update(usuario);
+            }
+
+            return usuario;
         }
     }
 }

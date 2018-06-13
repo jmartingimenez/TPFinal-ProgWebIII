@@ -14,8 +14,7 @@ namespace TPFinalProgWebIII.Controllers
 {
     public class HomeController : Controller
     {
-
-        PW3TP_20181C_TareasEntities db = new PW3TP_20181C_TareasEntities();
+        
 
         private IUsuarioService _usuarioService;
         private IGeneralService<Usuario> _generalService;
@@ -200,16 +199,11 @@ namespace TPFinalProgWebIII.Controllers
                 ViewBag.p = "fallo";
                 return View(cda);
             }
-
-           if( _usuarioService.ActivateAccount(new Usuario(),cda)!=null)
-            {
-                Usuario user = _usuarioService.ActivateAccount(new Usuario(), cda);
-                
-                //falla al actualizar
-                _generalService.Update(user);
+           
+                Usuario user = _usuarioService.ActivateAccount(cda);
               
                 ViewBag.p = user.Nombre+user.FechaActivacion+user.Activo+user.IdUsuario+user.Apellido+user.Email+user.FechaRegistracion;
-            }
+            //}
           
             return View();
         }

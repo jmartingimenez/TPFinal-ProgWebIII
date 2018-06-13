@@ -12,7 +12,7 @@ namespace TPFinalProgWebIII.Models.Service
         Usuario Login(Login login);
         Usuario FindByEmail(string email);
         Usuario BuildUsuario(Usuario usuario, Registro registro);
-        Usuario ActivateAccount(Usuario user,CodigoDeActivacion cda);
+        Usuario ActivateAccount(CodigoDeActivacion cda);
 
     }
 }

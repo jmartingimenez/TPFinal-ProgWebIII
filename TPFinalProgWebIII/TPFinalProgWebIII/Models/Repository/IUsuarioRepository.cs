@@ -7,7 +7,7 @@ using TPFinalProgWebIII.Models.View;
 
 namespace TPFinalProgWebIII.Models.Repository
 {
-    public interface IUsuarioRepository
+    public interface IUsuarioRepository 
     {
         Usuario Login(Login login);
         Usuario FindByEmail(string email);
