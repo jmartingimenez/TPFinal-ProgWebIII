@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TPFinalProgWebIII.Models.Enum;
 using TPFinalProgWebIII.Models.View;
 
 namespace TPFinalProgWebIII.Models.Service
@@ -13,6 +14,9 @@ namespace TPFinalProgWebIII.Models.Service
         Usuario FindByEmail(string email);
         Usuario BuildUsuario(Usuario usuario, Registro registro);
         Usuario ActivateAccount(CodigoDeActivacion cda);
-
+        void SendKeyByMail(Usuario usuario);
+        EstadoMail ComprobarEstadoMail(string email);
+        Usuario RegistrarUsuarioConMailNuevo(Registro registro);
+        Usuario RegistrarUsuarioConMailSinUso(Registro registro);
     }
 }

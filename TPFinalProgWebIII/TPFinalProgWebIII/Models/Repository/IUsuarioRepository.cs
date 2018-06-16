@@ -11,7 +11,5 @@ namespace TPFinalProgWebIII.Models.Repository
     {
         Usuario Login(Login login);
         Usuario FindByEmail(string email);
-        Usuario BuildUsuario(Usuario usuario, Registro registro);
-        Usuario ActivateAccount(Usuario user, CodigoDeActivacion cda);
     }
 }

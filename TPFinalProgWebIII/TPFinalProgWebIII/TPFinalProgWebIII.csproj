@@ -207,6 +207,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Enum\EstadoMail.cs" />
     <Compile Include="Models\RepositoryImp\GeneralRepositoryImp.cs" />
     <Compile Include="Models\RepositoryImp\UsuarioRepositoryImp.cs" />
     <Compile Include="Models\Repository\IGeneralRepository.cs" />

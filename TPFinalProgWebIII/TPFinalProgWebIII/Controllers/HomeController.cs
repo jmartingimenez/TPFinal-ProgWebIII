@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TPFinalProgWebIII.Models.Enum;
 using TPFinalProgWebIII.Models.Service;
 using TPFinalProgWebIII.Models.ServiceImp;
 using TPFinalProgWebIII.Models.View;
@@ -130,7 +131,22 @@ namespace TPFinalProgWebIII.Controllers
             if (!ModelState.IsValid)
                 return View("Registracion", registro);
 
-            RegistroHandler(registro);
+            EstadoMail estadoMail = _usuarioService.ComprobarEstadoMail(registro.Email);
+            if (estadoMail == EstadoMail.NUEVO_MAIL)
+            {
+                _usuarioService.RegistrarUsuarioConMailNuevo(registro);
+                ViewData["MensajeOK"] = "Cuenta nueva. Se le ha enviado un mail con su clave de activación";
+            }
+            else
+            {
+                if (estadoMail == EstadoMail.MAIL_INACTIVO)
+                {
+                    _usuarioService.RegistrarUsuarioConMailSinUso(registro);
+                    ViewData["MensajeOK"] = "Se le ha enviado un mail con su clave de activación";
+                }
+                else ViewData["MensajeOK"] = "El mail se encuentra en uso";
+            }
+
             return View("Registracion");
         }
 
@@ -142,34 +158,34 @@ namespace TPFinalProgWebIII.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult ActivarCuenta()
+        {
+            if (!Session["Nombre"].Equals(String.Empty))
+                return RedirectToAction("Index");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ActivarCuenta(CodigoDeActivacion cda)
+        {
+            ViewBag.p = "entro";
+            if (!ModelState.IsValid)
+            {
+                ViewBag.p = "fallo";
+                return View(cda);
+            }
+
+            Usuario user = _usuarioService.ActivateAccount(cda);
+
+            ViewBag.p = user.Nombre + user.FechaActivacion + user.Activo + user.IdUsuario + user.Apellido + user.Email + user.FechaRegistracion;
+            //}
+
+            return View();
+        }
+
         /*===========================================================
          * ==================MÉTODO(S) PRIVADO(S)====================
-         ===========================================================*/        
-
-        private void RegistroHandler(Registro registro)
-        {            
-            Usuario usuario = _usuarioService.FindByEmail(registro.Email);
-
-            //Si el mail no esta en uso
-            if (usuario == null)    
-            {
-                usuario = _usuarioService.BuildUsuario(new Usuario(), registro);
-                ViewData["MensajeOK"] = "Se le ha enviado un mail con su clave de activación";
-                _generalService.Create(usuario);
-            }
-            else    //Si esta en uso...
-            {
-                //... y el usuario no es activo...
-                if (usuario.Activo == 0)
-                {
-                    usuario = _usuarioService.BuildUsuario(usuario, registro);
-                    _generalService.Update(usuario);
-                    ViewData["MensajeOK"] = "Se actualizo un usuario viejo";
-                }
-                //... y el usuario es activo...
-                else ViewData["MensajeOK"] = "El mail se encuentra en uso";
-            }          
-        }
+         ===========================================================*/
 
         /*Creando una cookie
          - Pendiente encriptarla, probablemente se pueda hacer 
@@ -182,30 +198,6 @@ namespace TPFinalProgWebIII.Controllers
                 Response.Cookies["Usuario"]["Mail"] = email;
                 Response.Cookies["Usuario"].Expires = DateTime.Now.AddDays(90);
             }
-        }
-
-
-
-        public ActionResult ActivarCuenta()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult ActivarCuenta(CodigoDeActivacion cda)
-        {
-            ViewBag.p = "entro";
-            if (!ModelState.IsValid)
-            {
-                ViewBag.p = "fallo";
-                return View(cda);
-            }
-           
-                Usuario user = _usuarioService.ActivateAccount(cda);
-              
-                ViewBag.p = user.Nombre+user.FechaActivacion+user.Activo+user.IdUsuario+user.Apellido+user.Email+user.FechaRegistracion;
-            //}
-          
-            return View();
         }
     }
 }
