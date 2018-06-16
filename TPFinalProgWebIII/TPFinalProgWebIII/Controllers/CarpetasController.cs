@@ -58,7 +58,10 @@ namespace TPFinalProgWebIII.Controllers
                 carpeta.IdUsuario = id;
                 carpeta.Nombre = carpetaVal.Nombre;
                 carpeta.Descripcion = carpetaVal.Descripcion;
-                carpeta.Usuario = db.Usuario.Find(id);
+
+                //Esta linea no hace falta, la dejo comentada porque causa una excepción
+                //carpeta.Usuario = db.Usuario.Find(id);
+                
 
                 _generalService.Create(carpeta);
              
