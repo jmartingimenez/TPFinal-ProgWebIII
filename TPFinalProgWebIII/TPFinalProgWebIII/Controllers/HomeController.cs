@@ -9,11 +9,12 @@ using System.Web.Mvc;
 using TPFinalProgWebIII.Models.Enum;
 using TPFinalProgWebIII.Models.Service;
 using TPFinalProgWebIII.Models.ServiceImp;
+using TPFinalProgWebIII.Models.Util;
 using TPFinalProgWebIII.Models.View;
 
 namespace TPFinalProgWebIII.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : CustomController
     {
         
 
@@ -91,7 +92,11 @@ namespace TPFinalProgWebIII.Controllers
                     Session["Nombre"] = usuario.Nombre;
 
                     if (login.Recordarme)
-                        CookieHandler(login.Email);
+                    {
+                        Response.Cookies["Usuario"]["IdUsuario"] = CryptHandler.Crypt(usuario.IdUsuario.ToString());
+                        Response.Cookies["Usuario"]["Nombre"] = CryptHandler.Crypt(usuario.Nombre);
+                        Response.Cookies["Usuario"].Expires = DateTime.Now.AddDays(90);
+                    }
 
                     /*Si se intento entrar a una URL que 
                      requiere logearse, te devuelvo a esa. Si no, 
@@ -152,8 +157,15 @@ namespace TPFinalProgWebIII.Controllers
 
         public ActionResult Logout()
         {
+            /*Si estabas logeado además de desreferenciar de la sesión, hago vencer la 
+             cookie para que luego te pida de nuevo logearte*/
             if (!Session["Nombre"].Equals(String.Empty))
+            {
                 Session["Nombre"] = String.Empty;
+                if(Request.Cookies["Usuario"] != null)
+                    Response.Cookies["Usuario"].Expires = DateTime.Now.AddDays(-1);
+            }
+                
 
             return RedirectToAction("Index", "Home");
         }
@@ -181,23 +193,6 @@ namespace TPFinalProgWebIII.Controllers
             //}
 
             return View();
-        }
-
-        /*===========================================================
-         * ==================MÉTODO(S) PRIVADO(S)====================
-         ===========================================================*/
-
-        /*Creando una cookie
-         - Pendiente encriptarla, probablemente se pueda hacer 
-         una clase con métodos para encriptar/desencriptar luego. 
-         Dejo esto aca para que quede a la vista*/
-        private void CookieHandler(string email)
-        {
-            if (Request.Cookies["Usuario"] == null)
-            {
-                Response.Cookies["Usuario"]["Mail"] = email;
-                Response.Cookies["Usuario"].Expires = DateTime.Now.AddDays(90);
-            }
         }
     }
 }
