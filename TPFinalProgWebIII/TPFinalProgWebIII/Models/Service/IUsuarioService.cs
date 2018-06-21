@@ -14,6 +14,7 @@ namespace TPFinalProgWebIII.Models.Service
         Usuario FindByEmail(string email);
         Usuario BuildUsuario(Usuario usuario, Registro registro);
         Usuario ActivateAccount(CodigoDeActivacion cda);
+        void CrearCarpetaGeneral(Usuario usuario);
         void SendKeyByMail(Usuario usuario);
         EstadoMail ComprobarEstadoMail(string email);
         Usuario RegistrarUsuarioConMailNuevo(Registro registro);

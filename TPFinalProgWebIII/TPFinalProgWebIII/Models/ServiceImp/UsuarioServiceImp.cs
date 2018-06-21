@@ -75,7 +75,8 @@ namespace TPFinalProgWebIII.Models.ServiceImp
         public Usuario ActivateAccount(CodigoDeActivacion cda)
         {
             Usuario usuario = _usuarioRepository.FindByEmail(cda.Email);
-            
+            usuario = _generalRepository.Get(usuario.IdUsuario);
+
             if(usuario.CodigoActivacion == cda.CodigoActivacion)
             {
                 
@@ -140,6 +141,20 @@ namespace TPFinalProgWebIII.Models.ServiceImp
             _generalRepository.Update(usuario);
             SendKeyByMail(usuario);
             return usuario;
+        }
+
+        public void CrearCarpetaGeneral(Usuario usuario)
+        {
+
+            if (!usuario.Carpeta.Any(x => x.Nombre =="General")) { 
+                Carpeta carpeta = new Carpeta();
+                carpeta.Nombre = "General";
+                carpeta.Descripcion = "De usos multiples";
+
+                usuario.Carpeta.Add(carpeta);
+                _generalRepository.Update(usuario);
+
+            }
         }
     }
 }

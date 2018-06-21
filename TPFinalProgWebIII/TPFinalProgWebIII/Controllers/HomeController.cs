@@ -180,19 +180,23 @@ namespace TPFinalProgWebIII.Controllers
         [HttpPost]
         public ActionResult ActivarCuenta(CodigoDeActivacion cda)
         {
-            ViewBag.p = "entro";
-            if (!ModelState.IsValid)
-            {
-                ViewBag.p = "fallo";
-                return View(cda);
-            }
+            
+                ViewBag.p = "entro";
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.p = "fallo";
+                    return View(cda);
+                }
+                //activo usuario
+                Usuario user = _usuarioService.ActivateAccount(cda);
+                //Creo carpeta general
+                _usuarioService.CrearCarpetaGeneral(user);
+                ViewBag.p = user.Nombre + user.FechaActivacion + user.Activo + user.IdUsuario + user.Apellido + user.Email + user.FechaRegistracion;
+                //}
 
-            Usuario user = _usuarioService.ActivateAccount(cda);
+                return View();
 
-            ViewBag.p = user.Nombre + user.FechaActivacion + user.Activo + user.IdUsuario + user.Apellido + user.Email + user.FechaRegistracion;
-            //}
-
-            return View();
+            
         }
     }
 }
