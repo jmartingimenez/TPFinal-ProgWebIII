@@ -10,7 +10,7 @@ namespace TPFinalProgWebIII.Controllers
 {
     public class CarpetasController : CustomController
     {
-      
+
         // GET: Carpetas
 
         private IUsuarioService _usuarioService;
@@ -28,14 +28,21 @@ namespace TPFinalProgWebIII.Controllers
 
         public ActionResult Index()
         {
-            int id;
-            int.TryParse(Session["IdUsuario"].ToString(), out id);
+            try
+            {
+                int id;
+                int.TryParse(Session["IdUsuario"].ToString(), out id);
 
-            Usuario usuario = _generalUserService.Get(id);
+                Usuario usuario = _generalUserService.Get(id);
 
-            ViewBag.carpetas = usuario.Carpeta.OrderBy(x => x.Nombre).ToList();
+                ViewBag.carpetas = usuario.Carpeta.OrderBy(x => x.Nombre).ToList();
 
-            return View("Index", ViewBag);
+                return View("Index", ViewBag);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public ActionResult Crear()
@@ -49,33 +56,49 @@ namespace TPFinalProgWebIII.Controllers
         [ActionName("Crear-Carpeta")]
         public ActionResult Crear(CarpetaVal carpetaVal)
         {
-            int id;
-
-            if (!ModelState.IsValid)
+            try
             {
-                return View();
+                int id;
 
-            } else {
+                if (!ModelState.IsValid)
+                {
+                    return View();
 
-                Carpeta carpeta = new Carpeta();
-                int.TryParse(Session["IdUsuario"].ToString(), out id);
-                carpeta.IdUsuario = id;
-                carpeta.Nombre = carpetaVal.Nombre;
-                carpeta.Descripcion = carpetaVal.Descripcion;
+                }
+                else
+                {
 
-                _generalService.Create(carpeta);
-             
-                return RedirectToAction("Index");
+                    Carpeta carpeta = new Carpeta();
+                    int.TryParse(Session["IdUsuario"].ToString(), out id);
+                    carpeta.IdUsuario = id;
+                    carpeta.Nombre = carpetaVal.Nombre;
+                    carpeta.Descripcion = carpetaVal.Descripcion;
+
+                    _generalService.Create(carpeta);
+
+                    return RedirectToAction("Index");
+                }
             }
-            
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+
         }
 
         public ActionResult Tareas(int id)
         {
-            
-            ViewBag.tareas = _generalTareaService.GetAll().Where(x => x.IdCarpeta == id).ToList();
+            try
+            {
+                ViewBag.tareas = _generalTareaService.GetAll().Where(x => x.IdCarpeta == id).ToList();
 
-            return View("Tareas", ViewBag);
+                return View("Tareas", ViewBag);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

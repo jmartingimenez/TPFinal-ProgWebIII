@@ -23,76 +23,114 @@ namespace TPFinalProgWebIII.Controllers
         // GET: Tareas
         public ActionResult Index()
         {
-            int id;
-            int.TryParse(Session["IdUsuario"].ToString(), out id);
-            Usuario usuario = _generalUserService.Get(id);
+            try
+            {
 
-            ViewBag.tareas = usuario.Tarea.OrderByDescending(x => x.FechaCreacion).ToList();
+                int id;
+                int.TryParse(Session["IdUsuario"].ToString(), out id);
+                Usuario usuario = _generalUserService.Get(id);
 
-            return View("Index", ViewBag);
+                ViewBag.tareas = usuario.Tarea.OrderByDescending(x => x.FechaCreacion).ToList();
+
+                return View("Index", ViewBag);
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
         }
 
         public ActionResult Crear()
         {
-            int id;
-            int.TryParse(Session["IdUsuario"].ToString(), out id);
-            Usuario usuario = _generalUserService.Get(id);
-            //PARA EL SELECT DE CARPETAS
-            IEnumerable<Carpeta> carpetas = usuario.Carpeta.ToList();
+            try
+            {
 
-            ViewBag.carpetas = carpetas;
+                int id;
+                int.TryParse(Session["IdUsuario"].ToString(), out id);
+                Usuario usuario = _generalUserService.Get(id);
+                //PARA EL SELECT DE CARPETAS
+                IEnumerable<Carpeta> carpetas = usuario.Carpeta.ToList();
+
+                ViewBag.carpetas = carpetas;
 
 
-            return View();
+                return View();
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Crear(TareaVal tareaval)
         {
-            int id;
-
-            if (!ModelState.IsValid)
+            try
             {
-                return View();
+                int id;
 
+                if (!ModelState.IsValid)
+                {
+                    return View();
+
+                }
+                else
+                {
+
+                    Tarea tarea = new Tarea();
+                    int.TryParse(Session["IdUsuario"].ToString(), out id);
+                    tarea.IdUsuario = id;
+                    tarea.Nombre = tareaval.Nombre;
+                    tarea.Descripcion = tareaval.Descripcion;
+                    //FALTARIA VER COMO COMPROBAR SI NO ELEGIO CARPETA
+                    tarea.IdCarpeta = tareaval.IdCarpeta;
+                    tarea.Prioridad = (short)tareaval.Prioridad;
+                    tarea.EstimadoHoras = tareaval.EstimadoHoras;
+
+                    _generalService.Create(tarea);
+
+                    return RedirectToAction("Index");
+                }
             }
-            else
+            catch (Exception e)
             {
-
-                Tarea tarea = new Tarea();
-                int.TryParse(Session["IdUsuario"].ToString(), out id);
-                tarea.IdUsuario = id;
-                tarea.Nombre = tareaval.Nombre;
-                tarea.Descripcion = tareaval.Descripcion;
-                //FALTARIA VER COMO COMPROBAR SI NO ELEGIO CARPETA
-                tarea.IdCarpeta = tareaval.IdCarpeta;
-                tarea.Prioridad = (short)tareaval.Prioridad;
-                tarea.EstimadoHoras = tareaval.EstimadoHoras;
-
-                _generalService.Create(tarea);
-
-                return RedirectToAction("Index");
+                throw e;
             }
-
         }
 
         public ActionResult Detalle(int id)
         {
-            ViewBag.tarea = _generalService.Get(id);
-            return View("Detalle", ViewBag);
+            try
+            {
+                ViewBag.tarea = _generalService.Get(id);
+                return View("Detalle", ViewBag);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public ActionResult Completar(int id)
         {
-            Tarea tarea = _generalService.Get(id);
-            tarea.Completada = 1;
-            tarea.FechaFin = DateTime.Now;
-            _generalService.Update(tarea);
+            try
+            {
+                Tarea tarea = _generalService.Get(id);
+                tarea.Completada = 1;
+                tarea.FechaFin = DateTime.Now;
+                _generalService.Update(tarea);
 
 
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
