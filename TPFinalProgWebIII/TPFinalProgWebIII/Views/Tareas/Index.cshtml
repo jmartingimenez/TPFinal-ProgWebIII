@@ -1,6 +1,7 @@
 ﻿@using TPFinalProgWebIII.Models.Enum
 <h2>Mis Tareas</h2>
-
+<div>Mostrar completas <input checked="checked" type="checkbox" class="filtro" id="completas" /></div>
+<div>Mostrar no completas <input checked="checked" type="checkbox" class="filtro" id="nocompletas" /></div>
 <table class="table table-hover text-center">
     <thead>
         <tr>
@@ -11,7 +12,7 @@
             <th>Fecha creaci&oacute;n</th>
             <th>Fecha fin</th>
             <th>Prioridad</th>
-            <th>Completada <input checked="checked" type="checkbox" id="filtro" /></th>
+            <th>Completada</th>
             <th>Opciones</th>
         </tr>
     </thead>
@@ -51,18 +52,31 @@
 </table>
 
 <script>
-    $('#filtro').change(function () {
+    $('.filtro').change(function () {
 
-        if ($('#filtro').is(":checked")) {
+        alert("Evento");
+
+        if ($('#completas', '#nocompletas').is(":checked")) {
+
+            $('.completada').closest('tr').show();
+            $('.nocompletada').closest('tr').show();
+
+
+        } else if ($('#completas').is(":checked") && $('#nocompletas').not(":checked")) {
 
             $('.nocompletada').closest('tr').hide();
             $('.completada').closest('tr').show();
 
-
-        } else {
+        } else if ($('#completas').not(":checked") && $('#nocompletas').is(":checked")) {
 
             $('.nocompletada').closest('tr').show();
             $('.completada').closest('tr').hide();
+
+        } else if ($('#completas', '#nocompletas').not(":checked")){
+
+            $('.nocompletada').closest('tr').hide();
+            $('.completada').closest('tr').hide();
+
         }
     });
 </script>
