@@ -1,4 +1,5 @@
-﻿<h2>Mis Tareas</h2>
+﻿@using TPFinalProgWebIII.Models.Enum
+<h2>Mis Tareas</h2>
 
 <table class="table table-hover text-center">
     <thead>
@@ -15,23 +16,33 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(Tarea x in ViewBag.tareas)
+        @foreach (Tarea x in ViewBag.tareas)
         {
-          <tr>
-              <td>@x.IdTarea</td>
-              <td>@x.Nombre</td>
-              <td>@x.Descripcion</td>
-              <td>@x.EstimadoHoras</td>
-              <td>@x.FechaCreacion</td>
-              <td>@x.FechaFin</td>
-              <td>@x.Prioridad</td>
-              <td>@if(Convert.ToBoolean(@x.Completada)){
-                  <span class="glyphicon glyphicon-ok"></span>
-                   }
-              </td>
-              <td><a href="/tareas/detalle/@x.IdTarea"><span class=" glyphicon glyphicon-search"></span></a></td>
-          </tr>
-        }
+            <tr>
+                <td>@x.IdTarea</td>
+                <td>@x.Nombre</td>
+                <td>@x.Descripcion</td>
+                <td>@x.EstimadoHoras</td>
+                <td>@x.FechaCreacion</td>
+                <td>@x.FechaFin</td>
+                <td>
+                    @((TipoPrioridad)@x.Prioridad)
+               </td>
+                <td>
+                    @if(Convert.ToBoolean(@x.Completada))
+                    {
+                        <span class="glyphicon glyphicon-ok"></span>
+                    }
+            </td>
+            <td><a href="/tareas/detalle/@x.IdTarea"><span class=" glyphicon glyphicon-search"></span></a>
+                @if (!Convert.ToBoolean(@x.Completada))
+                {
+                   <a href="/tareas/completar/@x.IdTarea"><span class="glyphicon glyphicon-ok"></span></a>
+                }
+            </td>
+            
+        </tr>
+    }
     </tbody>
 
 </table>

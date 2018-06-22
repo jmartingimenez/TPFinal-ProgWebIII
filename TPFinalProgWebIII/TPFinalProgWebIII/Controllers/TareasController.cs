@@ -42,9 +42,9 @@ namespace TPFinalProgWebIII.Controllers
             Usuario usuario = db.Usuario.Single(x => x.IdUsuario == id);
             //PARA EL SELECT DE CARPETAS
             IEnumerable<Carpeta> carpetas = usuario.Carpeta.ToList();
-            
+
             ViewBag.carpetas = carpetas;
-            
+
 
             return View();
         }
@@ -70,20 +70,32 @@ namespace TPFinalProgWebIII.Controllers
                 tarea.Descripcion = tareaval.Descripcion;
                 //FALTARIA VER COMO COMPROBAR SI NO ELEGIO CARPETA
                 tarea.IdCarpeta = tareaval.IdCarpeta;
-                tarea.Prioridad = (short) tareaval.Prioridad;
+                tarea.Prioridad = (short)tareaval.Prioridad;
                 tarea.EstimadoHoras = tareaval.EstimadoHoras;
 
                 _generalService.Create(tarea);
 
                 return RedirectToAction("Index");
             }
-            
+
         }
 
         public ActionResult Detalle(int id)
         {
-            ViewBag.tarea =  db.Tarea.Find(id);
+            ViewBag.tarea = db.Tarea.Find(id);
             return View("Detalle", ViewBag);
+        }
+
+        public ActionResult Completar(int id)
+        {
+            Tarea tarea = _generalService.Get(id);
+            tarea.Completada = 1;
+            tarea.FechaFin = DateTime.Now;
+            _generalService.Update(tarea);
+
+
+
+            return RedirectToAction("Index");
         }
     }
 }
