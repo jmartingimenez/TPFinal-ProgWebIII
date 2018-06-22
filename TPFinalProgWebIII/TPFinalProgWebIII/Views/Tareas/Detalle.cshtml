@@ -1,4 +1,5 @@
-﻿<h2>Tareas - Detalle</h2>
+﻿@using TPFinalProgWebIII.Models.Enum
+<h2>Tareas - Detalle</h2>
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -9,14 +10,16 @@
         Horas estimadas: @ViewBag.tarea.EstimadoHoras<br />
         Fecha creaci&oacute;n: @ViewBag.tarea.FechaCreacion <br />
         Fecha fin: @ViewBag.tarea.FechaFin <br />
-        Prioridad: @ViewBag.tarea.Prioridad <br />
+        Prioridad:  @((TipoPrioridad)@ViewBag.tarea.Prioridad) <br />
         Completada: @if (Convert.ToBoolean(ViewBag.tarea.Completada))
-                         {
-                        <span class="glyphicon glyphicon-ok"></span>
-            } else {
-                <span class="glyphicon glyphicon-remove"></span>
-                }
-    <br />
+    {
+        <span class="glyphicon glyphicon-ok"></span>
+}
+else
+{
+    <span class="glyphicon glyphicon-remove"></span>
+}
+        <br />
     </div>
 </div>
 

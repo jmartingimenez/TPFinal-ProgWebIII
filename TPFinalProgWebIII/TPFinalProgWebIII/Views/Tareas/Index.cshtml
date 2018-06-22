@@ -11,7 +11,7 @@
             <th>Fecha creaci&oacute;n</th>
             <th>Fecha fin</th>
             <th>Prioridad</th>
-            <th>Completada</th>
+            <th>Completada <input checked="checked" type="checkbox" id="filtro" /></th>
             <th>Opciones</th>
         </tr>
     </thead>
@@ -28,13 +28,16 @@
                 <td>
                     @((TipoPrioridad)@x.Prioridad)
                </td>
-                <td>
                     @if(Convert.ToBoolean(@x.Completada))
                     {
-                        <span class="glyphicon glyphicon-ok"></span>
+                        
+                        <td class="completada"><span class="glyphicon glyphicon-ok"></span> </td>
+                    }else{
+                       
+                        <td class="nocompletada"></td>
                     }
-            </td>
-            <td><a href="/tareas/detalle/@x.IdTarea"><span class=" glyphicon glyphicon-search"></span></a>
+                        
+                <td><a href="/tareas/detalle/@x.IdTarea"><span class=" glyphicon glyphicon-search"></span></a>
                 @if (!Convert.ToBoolean(@x.Completada))
                 {
                    <a href="/tareas/completar/@x.IdTarea"><span class="glyphicon glyphicon-ok"></span></a>
@@ -46,3 +49,20 @@
     </tbody>
 
 </table>
+
+<script>
+    $('#filtro').change(function () {
+
+        if ($('#filtro').is(":checked")) {
+
+            $('.nocompletada').closest('tr').hide();
+            $('.completada').closest('tr').show();
+
+
+        } else {
+
+            $('.nocompletada').closest('tr').show();
+            $('.completada').closest('tr').hide();
+        }
+    });
+</script>
