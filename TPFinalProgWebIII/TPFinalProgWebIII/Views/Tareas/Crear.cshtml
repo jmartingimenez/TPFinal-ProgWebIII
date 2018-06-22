@@ -1,1 +1,45 @@
-﻿<h2>Tareas - Crear</h2>
+﻿@model TPFinalProgWebIII.Models.View.TareaVal
+<h2>Tareas - Crear</h2>
+
+
+<div class="formulario">
+    <div class="form-group">
+        @using (@Html.BeginForm("Crear", "Tareas", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.LabelFor(model => model.Nombre)<br />
+        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })<br />
+        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })<br />
+
+        @Html.LabelFor(model => model.Descripcion)<br />
+        @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" })<br />
+        @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })<br />
+
+        @Html.DropDownListFor(model => model.IdCarpeta, new SelectList(ViewBag.carpetas, "IdCarpeta", "Nombre"), "Elija carpeta")
+
+        @Html.EnumDropDownListFor(model => model.Prioridad)
+
+        @Html.LabelFor(model => model.EstimadoHoras)<br />
+        @Html.TextBoxFor(model => model.EstimadoHoras, new { @class = "form-control" })<br />
+        @Html.ValidationMessageFor(model => model.EstimadoHoras, "", new { @class = "text-danger" })<br />
+
+        <div class="btn-login-registro">
+            <input type="submit" value="Crear" class="btn btn-primary" /><br />
+        </div>
+}
+    </div>
+
+</div>
+
+<script>
+            $("input[name='EstimadoHoras']").TouchSpin({
+                min: 0,
+                max: 100000,
+                step: 0.1,
+                decimals: 2,
+                boostat: 5,
+                maxboostedstep: 10,
+                postfix: 'Hs.'
+    });
+</script>

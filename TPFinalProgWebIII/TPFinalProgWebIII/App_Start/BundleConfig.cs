@@ -22,6 +22,10 @@ namespace TPFinalProgWebIII.App_Start
             bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include(
                       "~/Content/css/bootstrap.css"));
 
+
+            bundles.Add(new ScriptBundle("~/bundles/touchspin").Include(
+                      "~/Content/bootstrap-touchspin-master/src/jquery.bootstrap-touchspin.js"));
+
             BundleTable.EnableOptimizations = true;
         }
     }

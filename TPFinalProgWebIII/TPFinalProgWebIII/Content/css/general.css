@@ -57,3 +57,7 @@ li>a:hover
     margin-left:15px;
     margin-right:5px;
 }
+
+.table td, .table th{
+    text-align: center !important;
+}

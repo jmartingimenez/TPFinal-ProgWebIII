@@ -11,13 +11,17 @@ namespace TPFinalProgWebIII
 {
     using System;
     using System.Collections.Generic;
-    
+    using TPFinalProgWebIII.Models.Enum;
+
     public partial class Tarea
     {
         public Tarea()
         {
+            this.Prioridad = (short)TipoPrioridad.BAJA;
             this.ArchivoTarea = new HashSet<ArchivoTarea>();
             this.ComentarioTarea = new HashSet<ComentarioTarea>();
+            this.FechaCreacion = DateTime.Now;
+            this.Completada = 0;
         }
     
         public int IdTarea { get; set; }
@@ -34,5 +38,6 @@ namespace TPFinalProgWebIII
         public virtual ICollection<ArchivoTarea> ArchivoTarea { get; set; }
         public virtual ICollection<ComentarioTarea> ComentarioTarea { get; set; }
         public virtual Usuario Usuario { get; set; }
+        
     }
 }
