@@ -11,24 +11,21 @@ namespace TPFinalProgWebIII.Controllers
 {
     public class TareasController : CustomController
     {
-
-
         private IGeneralService<Tarea> _generalService;
-        PW3TP_20181C_TareasEntities db = new PW3TP_20181C_TareasEntities();
+        private IGeneralService<Usuario> _generalUserService;
 
-        public TareasController(IGeneralService<Tarea> generalService)
+        public TareasController(IGeneralService<Tarea> generalService, IGeneralService<Usuario> generalUserService)
         {
             _generalService = generalService;
+            _generalUserService = generalUserService;
         }
-
-
 
         // GET: Tareas
         public ActionResult Index()
         {
             int id;
             int.TryParse(Session["IdUsuario"].ToString(), out id);
-            Usuario usuario = db.Usuario.Single(x => x.IdUsuario == id);
+            Usuario usuario = _generalUserService.Get(id);
 
             ViewBag.tareas = usuario.Tarea.OrderByDescending(x => x.FechaCreacion).ToList();
 
@@ -39,7 +36,7 @@ namespace TPFinalProgWebIII.Controllers
         {
             int id;
             int.TryParse(Session["IdUsuario"].ToString(), out id);
-            Usuario usuario = db.Usuario.Single(x => x.IdUsuario == id);
+            Usuario usuario = _generalUserService.Get(id);
             //PARA EL SELECT DE CARPETAS
             IEnumerable<Carpeta> carpetas = usuario.Carpeta.ToList();
 
@@ -82,7 +79,7 @@ namespace TPFinalProgWebIII.Controllers
 
         public ActionResult Detalle(int id)
         {
-            ViewBag.tarea = db.Tarea.Find(id);
+            ViewBag.tarea = _generalService.Get(id);
             return View("Detalle", ViewBag);
         }
 

@@ -10,19 +10,20 @@ namespace TPFinalProgWebIII.Controllers
 {
     public class CarpetasController : CustomController
     {
-
-        PW3TP_20181C_TareasEntities db = new PW3TP_20181C_TareasEntities();
+      
         // GET: Carpetas
 
         private IUsuarioService _usuarioService;
         private IGeneralService<Carpeta> _generalService;
         private IGeneralService<Usuario> _generalUserService;
+        private IGeneralService<Tarea> _generalTareaService;
 
-        public CarpetasController(IUsuarioService usuarioService, IGeneralService<Carpeta> generalService, IGeneralService<Usuario> generalUserService)
+        public CarpetasController(IUsuarioService usuarioService, IGeneralService<Carpeta> generalService, IGeneralService<Usuario> generalUserService, IGeneralService<Tarea> generalTareaService)
         {
             _usuarioService = usuarioService;
             _generalService = generalService;
             _generalUserService = generalUserService;
+            _generalTareaService = generalTareaService;
         }
 
         public ActionResult Index()
@@ -71,8 +72,8 @@ namespace TPFinalProgWebIII.Controllers
 
         public ActionResult Tareas(int id)
         {
-
-            ViewBag.tareas = db.Tarea.Where(x => x.IdCarpeta == id).ToList();
+            
+            ViewBag.tareas = _generalTareaService.GetAll().Where(x => x.IdCarpeta == id).ToList();
 
             return View("Tareas", ViewBag);
         }

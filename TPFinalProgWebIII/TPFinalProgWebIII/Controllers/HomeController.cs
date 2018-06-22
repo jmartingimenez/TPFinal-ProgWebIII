@@ -16,8 +16,6 @@ namespace TPFinalProgWebIII.Controllers
 {
     public class HomeController : CustomController
     {
-        
-
         private IUsuarioService _usuarioService;
         private IGeneralService<Usuario> _generalService;
 
