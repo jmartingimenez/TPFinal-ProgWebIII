@@ -1,7 +1,11 @@
 ﻿@using TPFinalProgWebIII.Models.Enum
 <h2>Mis Tareas</h2>
-<div>Mostrar completas <input checked="checked" type="checkbox" class="filtro" id="completas" /></div>
-<div>Mostrar no completas <input checked="checked" type="checkbox" class="filtro" id="nocompletas" /></div>
+
+<div>Mostrar completas <input checked="checked" type="checkbox" class="filtro" id="completas" onclick="javascript:checkear()"/></div>
+<div>Mostrar no completas <input checked="checked" type="checkbox" class="filtro" id="nocompletas" onclick="javascript:checkear()"/></div>
+
+
+
 <table class="table table-hover text-center">
     <thead>
         <tr>
@@ -38,45 +42,16 @@
                         <td class="nocompletada"></td>
                     }
                         
-                <td><a href="/tareas/detalle/@x.IdTarea"><span class=" glyphicon glyphicon-search"></span></a>
+                <td><a href="/tareas/detalle/@x.IdTarea"><span class="glyphicon glyphicon-search"></span></a>
                 @if (!Convert.ToBoolean(@x.Completada))
                 {
                    <a href="/tareas/completar/@x.IdTarea"><span class="glyphicon glyphicon-ok"></span></a>
                 }
             </td>
-            
+            <td>
         </tr>
     }
     </tbody>
 
 </table>
 
-<script>
-    $('.filtro').change(function () {
-
-        alert("Evento");
-
-        if ($('#completas', '#nocompletas').is(":checked")) {
-
-            $('.completada').closest('tr').show();
-            $('.nocompletada').closest('tr').show();
-
-
-        } else if ($('#completas').is(":checked") && $('#nocompletas').not(":checked")) {
-
-            $('.nocompletada').closest('tr').hide();
-            $('.completada').closest('tr').show();
-
-        } else if ($('#completas').not(":checked") && $('#nocompletas').is(":checked")) {
-
-            $('.nocompletada').closest('tr').show();
-            $('.completada').closest('tr').hide();
-
-        } else if ($('#completas', '#nocompletas').not(":checked")){
-
-            $('.nocompletada').closest('tr').hide();
-            $('.completada').closest('tr').hide();
-
-        }
-    });
-</script>

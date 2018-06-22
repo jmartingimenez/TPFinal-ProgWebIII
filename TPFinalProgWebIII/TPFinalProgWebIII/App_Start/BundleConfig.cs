@@ -26,6 +26,12 @@ namespace TPFinalProgWebIII.App_Start
             bundles.Add(new ScriptBundle("~/bundles/touchspin").Include(
                       "~/Content/bootstrap-touchspin-master/src/jquery.bootstrap-touchspin.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/tareaGeneral").Include(
+                     "~/Content/js/tareaGeneral.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/tareaCrear").Include(
+                    "~/Content/js/tareaCrear.js"));
+
             BundleTable.EnableOptimizations = true;
         }
     }

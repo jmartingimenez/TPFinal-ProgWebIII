@@ -21,9 +21,10 @@
         @Html.EnumDropDownListFor(model => model.Prioridad)
 
         @Html.LabelFor(model => model.EstimadoHoras)<br />
-        @Html.TextBoxFor(model => model.EstimadoHoras, new { @class = "form-control" })<br />
+        @Html.TextBoxFor(model => model.EstimadoHoras, new { @class = "form-control"})<br />
         @Html.ValidationMessageFor(model => model.EstimadoHoras, "", new { @class = "text-danger" })<br />
 
+       
         <div class="btn-login-registro">
             <input type="submit" value="Crear" class="btn btn-primary" /><br />
         </div>
@@ -33,13 +34,15 @@
 </div>
 
 <script>
-            $("input[name='EstimadoHoras']").TouchSpin({
-                min: 0,
-                max: 100000,
-                step: 0.1,
-                decimals: 2,
-                boostat: 5,
-                maxboostedstep: 10,
-                postfix: 'Hs.'
-    });
+    
+        $("input[name='EstimadoHoras']").TouchSpin({
+            min: 0,
+            max: 100000,
+            step: 0.1,
+            decimals: 2,
+            boostat: 5,
+            maxboostedstep: 10,
+            postfix: 'Hs.'
+        });
+    
 </script>
