@@ -75,6 +75,7 @@ namespace TPFinalProgWebIII.Models.ServiceImp
         public Usuario ActivateAccount(CodigoDeActivacion cda)
         {
             Usuario usuario = _usuarioRepository.FindByEmail(cda.Email);
+            //HAGO ESTO PARA PODER ACTUALIZAR EL USUARIO EN EL MISMO CONTEXTO DEL QUE SE BUSCA, SI NO TIRA ERROR MULTIPLES INSTANCIAS
             usuario = _generalRepository.Get(usuario.IdUsuario);
 
             if(usuario.CodigoActivacion == cda.CodigoActivacion)
