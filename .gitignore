@@ -462,3 +462,7 @@ Connection.config.Debug
 Connection.config.Release
 Connection.config.Debug.Template
 Connection.config.Release.Template
+
+#Ignorando los archivos subidos localmente
+
+/archivos/tareas/*
