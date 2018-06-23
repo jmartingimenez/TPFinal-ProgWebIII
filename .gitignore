@@ -465,4 +465,4 @@ Connection.config.Release.Template
 
 #Ignorando los archivos subidos localmente
 
-*/archivos/tareas/*
+archivos/
