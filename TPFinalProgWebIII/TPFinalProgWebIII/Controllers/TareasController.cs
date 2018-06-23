@@ -13,11 +13,15 @@ namespace TPFinalProgWebIII.Controllers
     {
         private IGeneralService<Tarea> _generalService;
         private IGeneralService<Usuario> _generalUserService;
+        private IGeneralService<ComentarioTarea> _generalComentarioService;
 
-        public TareasController(IGeneralService<Tarea> generalService, IGeneralService<Usuario> generalUserService)
+        public TareasController(IGeneralService<Tarea> generalService,
+                                IGeneralService<Usuario> generalUserService,
+                                IGeneralService<ComentarioTarea> generalComentarioService)
         {
             _generalService = generalService;
             _generalUserService = generalUserService;
+            _generalComentarioService = generalComentarioService;
         }
 
         // GET: Tareas
@@ -106,7 +110,7 @@ namespace TPFinalProgWebIII.Controllers
             try
             {
                 ViewBag.tarea = _generalService.Get(id);
-                return View("Detalle", ViewBag);
+                return View("Detalle");
             }
             catch (Exception e)
             {
@@ -128,6 +132,28 @@ namespace TPFinalProgWebIII.Controllers
                 return RedirectToAction("Index");
             }
             catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AgregarComentario(ComentarioTarea comentario)
+        {
+            try
+            {
+                /*Si no agrego la fecha a mano y dejo que lo haga la BDD, va ocurrir una 
+                 excepción: 'Conversion of a datetime2 data type to a datetime data type 
+                 results out-of-range value'
+                 (Tiene que ver con el tema de que se mezclan los formatos de fecha 
+                 'dd-mm-yyyy' y 'mm-dd-yyyy')*/
+                comentario.FechaCreacion = DateTime.Now;
+
+                _generalComentarioService.Create(comentario);
+
+                return RedirectToAction("Detalle", new { id = comentario.IdTarea});
+            }
+            catch(Exception e)
             {
                 throw e;
             }

@@ -12,7 +12,7 @@
         Fecha fin: @ViewBag.tarea.FechaFin <br />
         Prioridad:  @((TipoPrioridad)@ViewBag.tarea.Prioridad) <br />
         Completada: @if (Convert.ToBoolean(ViewBag.tarea.Completada))
-    {
+        {
         <span class="glyphicon glyphicon-ok"></span>
 }
 else
@@ -23,17 +23,32 @@ else
     </div>
 </div>
 
+<h4>Agregar comentario</h4>
+
+<div class="panel panel-default">
+    @using (@Html.BeginForm("AgregarComentario", "Tareas", FormMethod.Post))
+    {
+        <textarea name="Texto"></textarea><br />
+        <input type="hidden" name="IdTarea" value="@ViewBag.tarea.IdTarea" /><br />
+        <input type="submit" value="Env&iacute;ar" />
+    }
+</div>
+
 <h4>Comentarios</h4>
 
-@foreach (ComentarioTarea x in ViewBag.tarea.ComentarioTarea)
-{
-    <div class="panel panel-default">
-        <div class="panel-body">
-            @x.FechaCreacion - @x.Texto
-        </div>
-    </div>
+<div class="panel panel-default">
+    @{
+        //No me salió poner el Reverse() sobre el ViewBag. Por eso hago esta línea extra
+        HashSet<ComentarioTarea> listaDeComentarios = ViewBag.tarea.ComentarioTarea;
+        foreach (ComentarioTarea x in listaDeComentarios.Reverse())
+        {
+            <div class="panel-body">
+                @x.FechaCreacion - @x.Texto
+            </div>
+        }
+    }
+</div>
 
-}
 <h4>Archivos adjuntos</h4>
 
 @foreach (ArchivoTarea x in ViewBag.tarea.ArchivoTarea)
@@ -43,5 +58,4 @@ else
             @x.IdArchivoTarea - @x.FechaCreacion -> <a href="@x.RutaArchivo">Link</a>
         </div>
     </div>
-
 }
