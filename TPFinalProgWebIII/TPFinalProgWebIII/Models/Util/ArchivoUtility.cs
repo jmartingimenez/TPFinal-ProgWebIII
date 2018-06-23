@@ -7,14 +7,16 @@ using System.Web;
 
 namespace TPFinalProgWebIII.Models.Util {
     public class ArchivoUtility {
+        public static string pathDestino { get; set; }
+
         // <summary>
         /// Guarda la imagen y retorna la ruta relativa donde se guardó.
         /// </summary>
         /// <param name="archivoSubido"></param>
         /// <param name="nombreSignificativo">Puede ser el username en el caso de la imagen de un usuario, puede ser el nombde de una marca, el nombre un producto, dependiendo de con que se relacione la imagen subida</param>
         /// <returns></returns>
-        public static string Guardar(HttpPostedFileBase archivoSubido, string nombreSignificativo)
-        {
+        public static string Guardar(HttpPostedFileBase archivoSubido, string nombreArchivoSubido, int idTarea)
+        {            
             //Aclaracion: si queremos agrandar el tamaño máximo de archivo permitido modificar web.config (por defecto es 4MB -> 4096)
             //<httpRuntime maxRequestLength="4096" />
 
@@ -30,8 +32,11 @@ namespace TPFinalProgWebIII.Models.Util {
             //garantizamos que no importa si el valor en el web.config empieza/termina con /, nosotros le ponemos que empiece y termine con /
             carpetaArchivos = string.Format("/{0}/", carpetaArchivos.TrimStart('/').TrimEnd('/'));
 
+            //Agrego la id de la tarea en el path
+            carpetaArchivos = carpetaArchivos + idTarea.ToString() + "/";
+
             //Server.MapPath antepone a un string la ruta fisica donde actualmente esta corriendo la aplicacion (ej. c:\inetpub\misitio\)
-            string pathDestino = System.Web.Hosting.HostingEnvironment.MapPath("~") + carpetaArchivos;
+            pathDestino = System.Web.Hosting.HostingEnvironment.MapPath("~") + carpetaArchivos;
 
             //si no exise la carpeta, la creamos
             if (!System.IO.Directory.Exists(pathDestino))
@@ -39,14 +44,18 @@ namespace TPFinalProgWebIII.Models.Util {
                 System.IO.Directory.CreateDirectory(pathDestino);
             }
 
-            string nombreArchivoFinal = GenerarNombreUnico(nombreSignificativo);
+            //Server.MapPath antepone a un string la ruta fisica donde actualmente esta corriendo la aplicacion (ej. c:\inetpub\misitio\)
+            pathDestino = pathDestino + nombreArchivoSubido;
+
+            string nombreArchivoFinal = GenerarNombreUnico(nombreArchivoSubido);
             nombreArchivoFinal = string.Concat(nombreArchivoFinal, Path.GetExtension(archivoSubido.FileName));
 
             //para guardar en el disco rigido, se guarda con el path absoluto
-            archivoSubido.SaveAs(string.Concat(pathDestino, nombreArchivoFinal));
+            archivoSubido.SaveAs(string.Concat(pathDestino, "_" + nombreArchivoFinal));
 
             //retornamos el path relativo desde la raiz del sitio
-            return string.Concat(carpetaArchivos, nombreArchivoFinal);
+            string rutaParaLaBDD = carpetaArchivos + nombreArchivoSubido +"_" +nombreArchivoFinal;
+            return rutaParaLaBDD;
         }
 
         private static string GenerarNombreUnico(string nombreSignificativo)
@@ -62,30 +71,10 @@ namespace TPFinalProgWebIII.Models.Util {
             //removiendo espacios y caracteres raros del nombre 
             nombreSignificativo = Regex.Replace(nombreSignificativo.Trim(), @"[^a-zA-Z0-9]", m => "").ToLower();
 
-            //{Nombre,8 carac}-{Random,5 carac}
-            return string.Format("{0}-{1}", StringUtility.Truncar(nombreSignificativo, 8), StringUtility.Truncar(randomString, 5));
+            //{Nombre,8 carac}-{Random,12 carac}
+            return string.Format("{0}-{1}",
+                StringUtility.Truncar(nombreSignificativo.ToUpper(), 8),
+                StringUtility.Truncar(randomString, 12).ToUpper());
         }
-
-        /// <summary>
-        /// Borra el archivo guardado en el server basandose en el parametro (relativo o absoluto)
-        /// </summary>
-        /// <param name="pathGuardado"></param>
-        /// <returns></returns>
-        public static void Borrar(string pathGuardado)
-        {
-            //si el path es relativo, se le agrega el mapeo completo para que sea absoluto
-            //y pasar de /temp/imagen.jpg a c:\inetpub\temp\imagen.jpg por ejemplo
-            if (Path.GetPathRoot(pathGuardado).Contains(":"))
-            {
-                //Alternativa a Server.MapPath(
-                pathGuardado = System.Web.Hosting.HostingEnvironment.MapPath("~") + pathGuardado;
-            }
-
-            if (System.IO.File.Exists(pathGuardado))
-            {
-                System.IO.File.Decrypt(pathGuardado);
-            }
-        }
-
     }
 }

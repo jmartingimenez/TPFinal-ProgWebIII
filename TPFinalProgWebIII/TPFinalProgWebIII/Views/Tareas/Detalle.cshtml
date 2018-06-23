@@ -28,7 +28,7 @@ else
 <div class="panel panel-default">
     @using (@Html.BeginForm("AgregarComentario", "Tareas", FormMethod.Post))
     {
-        <textarea name="Texto"></textarea><br />
+        <textarea name="Texto" required></textarea><br />
         <input type="hidden" name="IdTarea" value="@ViewBag.tarea.IdTarea" /><br />
         <input type="submit" value="Env&iacute;ar" />
     }
@@ -49,13 +49,28 @@ else
     }
 </div>
 
+<h4>Agregar archivo</h4>
+
+<div class="panel panel-default">
+    @using (@Html.BeginForm("AgregarArchivo", "Tareas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="hidden" name="IdTarea" value="@ViewBag.tarea.IdTarea"/><br/>
+        <input type="file" name="ArchivoSubido" multiple required/><br />
+        <input type="submit" value="Env&iacute;ar" />
+    }
+</div>
+
 <h4>Archivos adjuntos</h4>
 
-@foreach (ArchivoTarea x in ViewBag.tarea.ArchivoTarea)
-{
-    <div class="panel panel-default">
-        <div class="panel-body">
-            @x.IdArchivoTarea - @x.FechaCreacion -> <a href="@x.RutaArchivo">Link</a>
-        </div>
-    </div>
-}
+<div class="panel panel-default">
+    @{
+        //No me salió poner el Reverse() sobre el ViewBag. Por eso hago esta línea extra
+        HashSet<ArchivoTarea> listaDeArchivos = ViewBag.tarea.ArchivoTarea;
+        foreach (ArchivoTarea x in listaDeArchivos.Reverse())
+        {
+            <div class="panel-body">
+                @x.FechaCreacion -> <a href="@x.RutaArchivo">Link</a>
+            </div>
+        }
+    }
+</div>

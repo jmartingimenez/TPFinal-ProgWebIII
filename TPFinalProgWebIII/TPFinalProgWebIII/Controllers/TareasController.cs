@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TPFinalProgWebIII.Models.Enum;
 using TPFinalProgWebIII.Models.Service;
+using TPFinalProgWebIII.Models.Util;
 using TPFinalProgWebIII.Models.View;
 
 namespace TPFinalProgWebIII.Controllers
@@ -14,14 +15,17 @@ namespace TPFinalProgWebIII.Controllers
         private IGeneralService<Tarea> _generalService;
         private IGeneralService<Usuario> _generalUserService;
         private IGeneralService<ComentarioTarea> _generalComentarioService;
+        private IGeneralService<ArchivoTarea> _generalArchivoService;
 
         public TareasController(IGeneralService<Tarea> generalService,
                                 IGeneralService<Usuario> generalUserService,
-                                IGeneralService<ComentarioTarea> generalComentarioService)
+                                IGeneralService<ComentarioTarea> generalComentarioService,
+                                IGeneralService<ArchivoTarea> generalArchivoService)
         {
             _generalService = generalService;
             _generalUserService = generalUserService;
             _generalComentarioService = generalComentarioService;
+            _generalArchivoService = generalArchivoService;
         }
 
         // GET: Tareas
@@ -152,6 +156,35 @@ namespace TPFinalProgWebIII.Controllers
                 _generalComentarioService.Create(comentario);
 
                 return RedirectToAction("Detalle", new { id = comentario.IdTarea});
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AgregarArchivo(FormCollection form)
+        {
+            try
+            {
+                int idTarea;
+                int.TryParse(form["IdTarea"].ToString(), out idTarea);
+
+                if(Request.Files.Count > 0 && Request.Files[0].ContentLength > 0)
+                {
+                    string nombreArchivo = System.IO.Path.GetFileNameWithoutExtension(Request.Files[0].FileName);
+                    string pathRelativo = ArchivoUtility.Guardar(Request.Files[0], nombreArchivo, idTarea);
+
+                    ArchivoTarea archivo = new ArchivoTarea();
+                    archivo.FechaCreacion = DateTime.Now;
+                    archivo.IdTarea = idTarea;
+                    archivo.RutaArchivo = pathRelativo;              
+                    _generalArchivoService.Create(archivo);
+                }
+
+                return RedirectToAction("Detalle", new { id = idTarea });
+
             }
             catch(Exception e)
             {
