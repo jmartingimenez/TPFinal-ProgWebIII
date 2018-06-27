@@ -14,14 +14,7 @@
 
 }
 
-.centradoGeneral
-{
-    margin-top:50px;
-    display:flex;
-    justify-content:center;
-    padding-left:10%;
-    padding-right:10%;
-}
+
 
 .form-control {
     display: inline;
@@ -32,23 +25,6 @@ div>h2
     text-align:center;
 }
 
-.btn-login-registro
-{
-  text-align:center;
-}
-
-
-/*
-li>a
-{
-    color:black !important;
-}
-
-li>a:hover
-{
-    color:black !important;
-    background-color:gainsboro !important;
-}*/
 
 .img-n
 {
@@ -60,4 +36,44 @@ li>a:hover
 
 .table td, .table th{
     text-align: center !important;
+}
+
+
+
+
+.checkbox
+{
+    margin-left: 20px;
+}
+
+
+
+
+
+.centrado
+{
+ padding-left:7%;
+ padding-right:7%;
+ margin-top:50px;
+   
+}
+
+.fondo_formu
+{
+    max-width:400px;
+  
+    background-color:gainsboro;
+    font-size:larger;
+    box-shadow:#808080 10px 10px 20px -3px;
+    margin: auto;
+}
+.recuadre
+{
+    padding:30px;
+}
+
+.encuadrarDetalle
+{
+    max-width:500px;
+    margin:auto;
 }

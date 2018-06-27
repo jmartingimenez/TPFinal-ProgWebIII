@@ -32,6 +32,31 @@ namespace TPFinalProgWebIII.App_Start
             bundles.Add(new ScriptBundle("~/bundles/tareaCrear").Include(
                     "~/Content/js/tareaCrear.js"));
 
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery110").Include(
+                    "~/Content/js/jquery-1.10.2.min.js"));
+
+           
+
+            bundles.Add(new StyleBundle("~/Content/general").Include(
+                "~/Content/css/general.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Carpetas").Include(
+                "~/Content/css/Carpetas.css"));
+            bundles.Add(new StyleBundle("~/Content/Login").Include(
+              "~/Content/css/Login.css"));
+            bundles.Add(new StyleBundle("~/Content/Home").Include(
+               "~/Content/css/Home.css"));
+            bundles.Add(new StyleBundle("~/Content/Registro").Include(
+               "~/Content/css/Registro.css"));
+            bundles.Add(new StyleBundle("~/Content/HomeLogueado").Include(
+               "~/Content/css/HomeLogueado.css"));
+
+            
+                   bundles.Add(new StyleBundle("~/Content/TareasIndex").Include(
+               "~/Content/css/TareasIndex.css"));
+
+
             BundleTable.EnableOptimizations = true;
         }
     }

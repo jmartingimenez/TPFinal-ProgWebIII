@@ -3,7 +3,7 @@
     <div class="flex-column col-md-2 carpetas-left">
        
         <div class="panel panel-default">
-            <div class="panel-heading"><h3>Mis Carpetas</h3></div>
+            <div class="panel-heading"><h2>Mis Carpetas</h2></div>
             <div class="panel-body">
                 @foreach (Carpeta x in ViewBag.carpetas)
                 {
@@ -12,7 +12,10 @@
                     </div>
                     
                 }
-            </div>
+                <div class="carpetas-flex">
+                    <a href="/Carpetas/Crear"> <img src="~/Content/img/FolderBlack.png" class="iconfolder img-responsive pull-left" /> <span class="pull-left ">Crear Carpeta </span> </a>
+                </div>
+                  </div>
         </div>
        
 
@@ -20,7 +23,7 @@
     <div class="flex-column col-md-10">
       
         <div class="panel panel-default">
-            <div class="panel-heading"><h3>Tareas</h3></div>
+            <div class="panel-heading"><h2>Tareas</h2></div>
             <div class="panel-body">
                
                 <table class="table">

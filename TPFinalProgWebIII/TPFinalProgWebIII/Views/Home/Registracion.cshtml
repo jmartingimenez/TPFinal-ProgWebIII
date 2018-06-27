@@ -12,7 +12,7 @@
 </div>
 @if (ViewData["MensajeOK"] != null)
 {
-    <div class="alert alert-success centermsg" role="alert">
+    <div class="alert alert-success text-center" role="alert">
         @ViewData["MensajeOK"]
     </div>
 
@@ -20,10 +20,10 @@
  
 
 <!---Redirige a p&aacute;gina de inicio.-->
+<div class="centrado">
+    <div class="fondo_formu">
+        <div class="recuadre">
 
-<div class="centradoGeneral">
-    <div class="fondoRecuadroRegistrar">
-        <div class="formuRegistro">
             @using (@Html.BeginForm("Procesar-Registro", "Home", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
@@ -50,10 +50,10 @@
 
                 @Html.Captcha(Captcha)<br /><br />
                 <text>Ingrese el captcha</text><br />
-                @Html.TextBox("CaptchaCode")<br />
+                @Html.TextBox("CaptchaCode","", new { @class = "form-control" })<br />
                 @Html.ValidationMessage("CaptchaCode", "", new { @class = "text-danger" })<br /><br />
 
-                <div class="btn-login-registro">
+                <div class="text-center">
                 <input type="submit" value="Registrarse" class="btn btn-primary" /><br/>
                 </div>
               

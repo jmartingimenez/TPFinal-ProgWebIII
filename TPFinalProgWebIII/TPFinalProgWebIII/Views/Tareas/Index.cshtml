@@ -1,57 +1,102 @@
 ﻿@using TPFinalProgWebIII.Models.Enum
-<h2>Mis Tareas</h2>
-
-<div>Mostrar completas <input checked="checked" type="checkbox" class="filtro" id="completas" onclick="javascript:checkear()"/></div>
-<div>Mostrar no completas <input checked="checked" type="checkbox" class="filtro" id="nocompletas" onclick="javascript:checkear()"/></div>
 
 
+    <div class="d-flex flex-row">
+        <div class="flex-column col-md-2 carpetas-left">
 
-<table class="table table-hover text-center">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Descrip.</th>
-            <th>Horas estim.</th>
-            <th>Fecha creaci&oacute;n</th>
-            <th>Fecha fin</th>
-            <th>Prioridad</th>
-            <th>Completada</th>
-            <th>Opciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Tarea x in ViewBag.tareas)
-        {
-            <tr>
-                <td>@x.IdTarea</td>
-                <td>@x.Nombre</td>
-                <td>@x.Descripcion</td>
-                <td>@x.EstimadoHoras</td>
-                <td>@x.FechaCreacion</td>
-                <td>@x.FechaFin</td>
-                <td>
-                    @((TipoPrioridad)@x.Prioridad)
-               </td>
-                    @if(Convert.ToBoolean(@x.Completada))
-                    {
-                        
-                        <td class="completada"><span class="glyphicon glyphicon-ok"></span> </td>
-                    }else{
-                       
-                        <td class="nocompletada"></td>
-                    }
-                        
-                <td><a href="/tareas/detalle/@x.IdTarea"><span class="glyphicon glyphicon-search"></span></a>
-                @if (!Convert.ToBoolean(@x.Completada))
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Filtro</h2></div>
+                <div class="panel-body">
+                  
+                        <div class="Filtro-flex">
+                            
+                            <div class="Filtro-flex">Mostrar completas <input checked="checked" type="checkbox" class="filtro" id="completas" onclick="javascript:checkear()" /></div>
+                            <div class="Filtro-flex">Mostrar no completas <input checked="checked" type="checkbox" class="filtro" id="nocompletas" onclick="javascript:checkear()" /></div>
+                        </div>
+                </div>
+            </div>
+            @*  *@
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <div class="text-center">
+                        <a href="/Tareas/Crear" class="btn btn-info">Crear Tarea</a>
+                    </div>
+
+                </div>
+            </div>
+                @*  *@
+
+
+            </div>
+        <div class="flex-column col-md-10">
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Mis Tareas</h2></div>
+                <div class="panel-body">
+
+
+                    <table class="table table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descrip.</th>
+                                <th>Horas estim.</th>
+                                <th>Fecha creaci&oacute;n</th>
+                                <th>Fecha fin</th>
+                                <th>Prioridad</th>
+                                <th>Completada</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Tarea x in ViewBag.tareas)
+                            {
+                                <tr>
+                                    <td>@x.IdTarea</td>
+                                    <td>@x.Nombre</td>
+                                    <td>@x.Descripcion</td>
+                                    <td>@x.EstimadoHoras</td>
+                                    <td>@x.FechaCreacion</td>
+                                    <td>@x.FechaFin</td>
+                                    <td>
+                                        @((TipoPrioridad)@x.Prioridad)
+                                    </td>
+                                    @if (Convert.ToBoolean(@x.Completada))
+                                    {
+
+                                        <td class="completada"><span class="glyphicon glyphicon-ok"></span> </td>
+                                    }
+                                    else
+                                    {
+
+                                        <td class="nocompletada"></td>
+                                    }
+
+                                    <td>
+                                        <a href="/tareas/detalle/@x.IdTarea"><span class="glyphicon glyphicon-search"></span></a>
+                                        @if (!Convert.ToBoolean(@x.Completada))
                 {
-                   <a href="/tareas/completar/@x.IdTarea"><span class="glyphicon glyphicon-ok"></span></a>
-                }
-            </td>
-            <td>
-        </tr>
-    }
-    </tbody>
+                                            <a href="/tareas/completar/@x.IdTarea"><span class="glyphicon glyphicon-ok"></span></a>
+                                        }
+                                    </td>
+                                    <td>
+                                </tr>
+                            }
+                        </tbody>
 
-</table>
+                    </table>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div> 
+
+
+
+
+
 

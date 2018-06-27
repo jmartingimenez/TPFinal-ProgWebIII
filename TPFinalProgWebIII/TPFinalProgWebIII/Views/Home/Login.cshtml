@@ -1,62 +1,66 @@
 ﻿@model TPFinalProgWebIII.Models.View.Login
 
 <div>
-   <p>
-    <h2>Tienes una cuenta?</h2>
-   <!-- Redirige a pagina de inicio.-->
-</p>
+    <p>
+        <h2>Tienes una cuenta?</h2>
+        <!-- Redirige a pagina de inicio.-->
+    </p>
 </div>
-   
-<div class="centradoGeneral">
-   
-    <div class="fondoRecuadroLogin">
+<div class="centrado">
+    <div class="fondo_formu">
+        <div class="recuadre">
 
-        
-        <div class="formuLogin">
+            @*<div class="centradoGeneral">
 
-    @using (@Html.BeginForm("Procesar-Login", "Home", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()        
-
-        @Html.LabelFor(model => model.Email)<br />
-        @Html.TextBoxFor(model => model.Email, new { @placeholder = "Ej: email@hotmail.com", @class = "form-control" })<br />
-        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br />
-
-        @Html.LabelFor(model => model.Contrasenia)<br />
-        @Html.PasswordFor(model => model.Contrasenia, new { @class = "form-control" })<br />
-        @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })<br />
+                <div class="fondoRecuadroLogin">
 
 
-        <div class="checkbox">
+                    <div class="formuLogin">*@
+
+            @using (@Html.BeginForm("Procesar-Login", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.LabelFor(model => model.Email)<br />
+                @Html.TextBoxFor(model => model.Email, new { @placeholder = "Ej: email@hotmail.com", @class = "form-control" })<br />
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br />
+
+                @Html.LabelFor(model => model.Contrasenia)<br />
+                @Html.PasswordFor(model => model.Contrasenia, new { @class = "form-control" })<br />
+                @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })<br />
+
+                <text> Recordarme: </text>
                 @Html.CheckBoxFor(model => model.Recordarme)
-                @Html.LabelFor(model => model.Recordarme)
-        </div>
-        <br />
-        <div class="btn-login-registro">
-        <input type="submit" value="Iniciar sesi&oacute;n" class="btn btn-primary"/>
-        </div>
+               
+              
+                <br />
 
-        if (ViewData["MensajeOK"] != null)
-        {
-            <br/>
-                <div class="alert alert-danger centermsg" role="alert">
-                    @ViewData["MensajeOK"]
+                <br />
+                <div class="text-center">
+                    <input type="submit" value="Iniciar sesi&oacute;n" class="btn btn-primary" />
                 </div>
 
-        }
+                if (ViewData["MensajeOK"] != null)
+                {
+                    <br />
+                    <div class="alert alert-danger centermsg" role="alert">
+                        @ViewData["MensajeOK"]
+                    </div>
 
-        if (ViewBag.msg != null)
-        {
-            <br />
-            <div class="alert alert-info centermsg" role="alert">
-                @ViewBag.msg 
-            </div>
-          
-            <div class="btn-login-registro">
-            <a href="/home/ActivarCuenta" class="btn btn-success">Activar cuenta</a>
-            </div>
-        }
-    }
-            </div>
+                }
+
+                if (ViewBag.msg != null)
+                {
+                    <br />
+                    <div class="alert alert-info centermsg" role="alert">
+                        @ViewBag.msg
+                    </div>
+
+                    <div class="btn-login-registro">
+                        <a href="/home/ActivarCuenta" class="btn btn-success">Activar cuenta</a>
+                    </div>
+                }
+            }
+        </div>
     </div>
 </div>

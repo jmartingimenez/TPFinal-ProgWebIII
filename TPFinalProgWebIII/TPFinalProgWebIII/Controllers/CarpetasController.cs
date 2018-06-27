@@ -91,8 +91,16 @@ namespace TPFinalProgWebIII.Controllers
         {
             try
             {
+                int idU;
+                int.TryParse(Session["IdUsuario"].ToString(), out idU);
+
+                Usuario usuario = _generalUserService.Get(idU);
+
+                ViewBag.nombreCarpeta = usuario.Carpeta.Where(x => x.IdCarpeta == id).First().Nombre;
+
                 ViewBag.tareas = _generalTareaService.GetAll().Where(x => x.IdCarpeta == id).ToList();
 
+              
                 return View("Tareas", ViewBag);
             }
             catch (Exception e)

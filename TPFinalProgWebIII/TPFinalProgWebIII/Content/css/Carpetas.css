@@ -9,7 +9,7 @@
 }
 .contenedor_carpetas
 {
-   width:150px;
+   width:125px;
    
    display:flex;
    flex-direction:column;

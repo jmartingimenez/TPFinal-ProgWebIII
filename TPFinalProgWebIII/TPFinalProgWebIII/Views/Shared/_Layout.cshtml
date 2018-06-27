@@ -6,22 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - MyFolder</title>
 
+   
+ 
+   @* al parecer en este orden no rompe nada *@
     @Styles.Render("~/Content/bootstrapcss")
-
+    
+  
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+   
+
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/touchspin")
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/bootstrapcss")
     @Scripts.Render("~/bundles/tareaGeneral")
     @Scripts.Render("~/bundles/tareaCrear")
-    <link rel="stylesheet" href="~/Content/css/general.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/css/Carpetas.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/css/Login.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/css/Home.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/css/Registro.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/css/HomeLogueado.css" type="text/css">
+    @Styles.Render("~/Content/general")
+    @Styles.Render("~/Content/Carpetas") 
+     @Styles.Render("~/Content/Login") 
+     @Styles.Render("~/Content/Home") 
+     @Styles.Render("~/Content/Registro") 
+     @Styles.Render("~/Content/HomeLogueado")
   
-  
+    @Styles.Render("~/Content/TareasIndex")
 
 
 </head>
@@ -35,15 +44,15 @@
         <hr />
 
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+          
         </footer>
    
 
-    <script src="~/Content/js/jquery-1.10.2.min.js"></script>
+    @*<script src="~/Content/js/jquery-1.10.2.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
 
     <script src="~/Content/js/jquery.validate.min.js"></script>
-    <script src="~/Content/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/js/jquery.validate.unobtrusive.min.js"></script>*@
   
 
     
