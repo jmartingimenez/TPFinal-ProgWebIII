@@ -9,9 +9,10 @@
    
  
    @* al parecer en este orden no rompe nada *@
-    @Styles.Render("~/Content/bootstrapcss")
+   
     
-  
+    <script src="~/Content/js/jquery.validate.min.js"></script>
+    <script src="~/Content/js/jquery.validate.unobtrusive.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
    
 
@@ -20,6 +21,7 @@
 
 
     @Scripts.Render("~/bundles/bootstrap")
+
     @Styles.Render("~/Content/bootstrapcss")
     @Scripts.Render("~/bundles/tareaGeneral")
     @Scripts.Render("~/bundles/tareaCrear")
@@ -48,11 +50,8 @@
         </footer>
    
 
-    @*<script src="~/Content/js/jquery-1.10.2.min.js"></script>
-    <script src="~/Content/js/bootstrap.min.js"></script>
 
-    <script src="~/Content/js/jquery.validate.min.js"></script>
-    <script src="~/Content/js/jquery.validate.unobtrusive.min.js"></script>*@
+ 
   
 
     

@@ -239,20 +239,17 @@ namespace TPFinalProgWebIII.Controllers
         {
             try
             {
-                ViewBag.p = "entro";
+               
                 if (!ModelState.IsValid)
                 {
-                    ViewBag.p = "fallo";
                     return View(cda);
                 }
                 //activo usuario
                 Usuario user = _usuarioService.ActivateAccount(cda);
                 //Creo carpeta general
                 _usuarioService.CrearCarpetaGeneral(user);
-                ViewBag.p = user.Nombre + user.FechaActivacion + user.Activo + user.IdUsuario + user.Apellido + user.Email + user.FechaRegistracion;
-                //}
-
-                return View();
+              
+                return RedirectToAction("Login");
 
 
             }

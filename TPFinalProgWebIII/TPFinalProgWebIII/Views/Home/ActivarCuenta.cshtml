@@ -3,24 +3,29 @@
     ViewBag.Title = "ActivarCuenta";
 }
 
-<h2>Ingrese su codigo de activacion</h2>
+<div><h2>Ingrese su codigo de activacion</h2></div>
+<div class="centrado">
+    <div class="fondo_formu">
+        <div class="recuadre">
+            @using (@Html.BeginForm("ActivarCuenta", "Home", FormMethod.Post))
+            {
 
-@using (@Html.BeginForm("ActivarCuenta", "Home", FormMethod.Post))
-{
-   
-      @Html.LabelFor(model=>model.CodigoActivacion)
-        @Html.TextBoxFor(model => model.CodigoActivacion, new { @placeholder = "Ej:11111111-1111-1111-1111-111111111111", @class = "form-control" })<br />
-        @Html.ValidationMessageFor(model => model.CodigoActivacion, "", new { @class = "text-danger" })<br />
+                @Html.LabelFor(model => model.CodigoActivacion)
+                @Html.TextBoxFor(model => model.CodigoActivacion, new { @placeholder = "Ej:11111111-1111-1111-1111-111111111111", @class = "form-control" })<br />
+                @Html.ValidationMessageFor(model => model.CodigoActivacion, "", new { @class = "text-danger" })<br />
 
-        @Html.LabelFor(model => model.Email)
-        @Html.TextBoxFor(model => model.Email, new { @placeholder = "ejemplo@hotmail.com", @class = "form-control" })<br />
-        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br />
+                @Html.LabelFor(model => model.Email)
+                @Html.TextBoxFor(model => model.Email, new { @placeholder = "ejemplo@hotmail.com", @class = "form-control" })<br />
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<br />
 
 
-        <br />
-        <div class="btn-login-registro">
-            <input type="submit" value="Verificar" class="btn btn-primary" />
+                <br />
+                <div class="text-center">
+                    <input type="submit" value="Verificar" class="btn btn-primary" />
+                </div>
+
+                @ViewBag.p
+            }
         </div>
-
-        @ViewBag.p
-}
+    </div>
+</div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -61,9 +62,9 @@ namespace TPFinalProgWebIII.Controllers
                 IEnumerable<Carpeta> carpetas = usuario.Carpeta.ToList();
 
                 ViewBag.carpetas = carpetas;
+                
 
-
-
+                
                 return View();
 
             }
@@ -83,7 +84,7 @@ namespace TPFinalProgWebIII.Controllers
 
                 if (!ModelState.IsValid)
                 {
-                    return View();
+                    return RedirectToAction("Index");
 
                 }
                 else
