@@ -80,7 +80,10 @@ namespace TPFinalProgWebIII.Models.ServiceImp
 
             if(usuario.CodigoActivacion == cda.CodigoActivacion)
             {
-                
+                /*Ver si se mejora esto. Lo puse para evitar que puedas activar la cuenta 
+                 aunque ya este activa la misma. */
+                if (usuario.Activo == 1) return usuario;
+
                 usuario.Activo = 1;
                 usuario.FechaActivacion = DateTime.Now;
 

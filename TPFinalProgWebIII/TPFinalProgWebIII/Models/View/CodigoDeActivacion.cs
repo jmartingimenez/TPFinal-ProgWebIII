@@ -8,7 +8,7 @@ namespace TPFinalProgWebIII.Models.View
 {
     public class CodigoDeActivacion
     {
-        [Required]
+        [Required(ErrorMessage = "Debe ingresar el código de activación envíado a su correo")]
         [StringLength(200)]
         public string CodigoActivacion { get; set; }
         [Required(ErrorMessage = "El email es obligatorio")]

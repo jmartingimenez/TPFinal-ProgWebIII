@@ -246,6 +246,15 @@ namespace TPFinalProgWebIII.Controllers
                 }
                 //activo usuario
                 Usuario user = _usuarioService.ActivateAccount(cda);
+
+                /*Si el usuario no se activo (código incorrecto). 
+                Agrego un error y te devuelvo a la vista*/
+                if(user.Activo == 0)
+                {
+                    ModelState.AddModelError("CodigoInvalido", "El código no es correcto.");
+                    return View(cda);
+                }
+
                 //Creo carpeta general
                 _usuarioService.CrearCarpetaGeneral(user);
               
