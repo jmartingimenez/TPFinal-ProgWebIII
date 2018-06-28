@@ -8,8 +8,7 @@ using TPFinalProgWebIII.Models.Enum;
 namespace TPFinalProgWebIII.Models.View
 {
     public class TareaVal
-    {
-        
+    {        
         public int IdCarpeta { get; set; }
       
         [Required(ErrorMessage = "El nombre es obligatorio")]
@@ -22,11 +21,6 @@ namespace TPFinalProgWebIII.Models.View
         [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "La cantidad de horas estimadas solo puede tener hasta dos decimales")]
         public Nullable<decimal> EstimadoHoras { get; set; }
 
-        public Nullable<System.DateTime> FechaFin { get; set; }
-        public TipoPrioridad Prioridad { get; set; }
-        
-
-
-        
+        public TipoPrioridad Prioridad { get; set; }           
     }
 }

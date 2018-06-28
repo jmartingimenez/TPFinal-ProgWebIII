@@ -84,8 +84,7 @@ namespace TPFinalProgWebIII.Controllers
 
                 if (!ModelState.IsValid)
                 {
-                    return RedirectToAction("Index");
-
+                    return View();
                 }
                 else
                 {
