@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -89,6 +90,7 @@ namespace TPFinalProgWebIII.Controllers
 
         public ActionResult Tareas(int id)
         {
+         //   Debugger.Break();
             try
             {
                 int idU;

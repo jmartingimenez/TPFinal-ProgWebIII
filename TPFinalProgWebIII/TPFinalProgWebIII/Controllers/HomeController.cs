@@ -47,7 +47,7 @@ namespace TPFinalProgWebIII.Controllers
                     Usuario usuario = _generalService.Get(id);
 
                     List<Carpeta> carpetas = usuario.Carpeta.OrderBy(x => x.Nombre).ToList();
-                    List<Tarea> tareas = usuario.Tarea.OrderBy(x => x.Prioridad).ThenBy(x => x.FechaFin).ToList();
+                    List<Tarea> tareas = usuario.Tarea.Where(x=>x.Completada==0).OrderBy(x => x.Prioridad).ThenBy(x => x.FechaFin).ToList();
 
                     ViewBag.carpetas = carpetas;
                     ViewBag.tareas = tareas;

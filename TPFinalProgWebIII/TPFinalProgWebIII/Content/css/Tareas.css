@@ -1,0 +1,15 @@
+﻿.AcomodarTarea
+{
+    width:230px;
+    margin-right:30px;
+}
+.acomodar
+{
+    display:flex;
+    flex-flow:wrap;
+}
+
+.table-bordered
+{
+    background-color:gainsboro !important;
+}

@@ -33,3 +33,6 @@ function checkear()
 }
 
 
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})

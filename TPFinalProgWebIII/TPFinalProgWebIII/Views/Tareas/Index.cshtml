@@ -39,29 +39,31 @@
                     <table class="table table-hover text-center">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Nombre</th>
-                                <th>Descrip.</th>
                                 <th>Horas estim.</th>
                                 <th>Fecha creaci&oacute;n</th>
                                 <th>Fecha fin</th>
                                 <th>Prioridad</th>
-                                <th>Completada</th>
                                 <th>Opciones</th>
+                                <th>Completada</th>
+                                <th>Completar Tarea</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (Tarea x in ViewBag.tareas)
                             {
+                         
                                 <tr>
-                                    <td>@x.IdTarea</td>
-                                    <td>@x.Nombre</td>
-                                    <td>@x.Descripcion</td>
+                                    <td><a href="/Carpetas/Tareas/@x.IdCarpeta">@x.Nombre</a></td>
                                     <td>@x.EstimadoHoras</td>
                                     <td>@x.FechaCreacion</td>
                                     <td>@x.FechaFin</td>
                                     <td>
                                         @((TipoPrioridad)@x.Prioridad)
+                                    </td>
+                            
+                                    <td>
+                                        <a href="/tareas/detalle/@x.IdTarea"><span class="glyphicon glyphicon-search"></span></a>
                                     </td>
                                     @if (Convert.ToBoolean(@x.Completada))
                                     {
@@ -74,8 +76,8 @@
                                         <td class="nocompletada"></td>
                                     }
 
+                                 
                                     <td>
-                                        <a href="/tareas/detalle/@x.IdTarea"><span class="glyphicon glyphicon-search"></span></a>
                                         @if (!Convert.ToBoolean(@x.Completada))
                 {
                                             <a href="/tareas/completar/@x.IdTarea"><span class="glyphicon glyphicon-ok"></span></a>

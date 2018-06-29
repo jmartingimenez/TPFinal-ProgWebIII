@@ -33,12 +33,12 @@ else
 
 <h4>Agregar comentario</h4>
 
-<div class="panel panel-default">
+<div class="panel panel-default text-center">
     @using (@Html.BeginForm("AgregarComentario", "Tareas", FormMethod.Post))
     {
         <textarea name="Texto" required class="form-control"></textarea><br />
         <input type="hidden" name="IdTarea" value="@ViewBag.tarea.IdTarea" /><br />
-        <input type="submit" value="Env&iacute;ar" />
+        <input type="submit" class="btn btn-info" value="Comentar" />
     }
 </div>
 
@@ -53,9 +53,10 @@ else
         //No me salió poner el Reverse() sobre el ViewBag. Por eso hago esta línea extra
         HashSet<ComentarioTarea> listaDeComentarios = ViewBag.tarea.ComentarioTarea;
         foreach (ComentarioTarea x in listaDeComentarios.Reverse())
-        {
+        {   <div class="table-bordered">
             <div class="panel-body">
                 @x.FechaCreacion - @x.Texto
+            </div>
             </div>
         }
     }
@@ -66,12 +67,12 @@ else
 
 <h4>Agregar archivo</h4>
 
-<div class="panel panel-default">
+<div class="panel panel-default text-center">
     @using (@Html.BeginForm("AgregarArchivo", "Tareas", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <input type="hidden" name="IdTarea" value="@ViewBag.tarea.IdTarea"/><br/>
-        <input type="file" name="ArchivoSubido" multiple required/><br />
-        <input type="submit" value="Env&iacute;ar" />
+        <input type="file" class="btn btn-default" name="ArchivoSubido" multiple required/><br />
+        <input type="submit" class="btn btn-info" value="Env&iacute;ar" />
     }
 </div>
 
@@ -85,9 +86,11 @@ else
         HashSet<ArchivoTarea> listaDeArchivos = ViewBag.tarea.ArchivoTarea;
         foreach (ArchivoTarea x in listaDeArchivos.Reverse())
         {
+            <div class="table-bordered">
             <div class="panel-body">
                 @x.FechaCreacion -> <a href="@x.RutaArchivo">Link</a>
             </div>
+                </div>
         }
     }
 </div>

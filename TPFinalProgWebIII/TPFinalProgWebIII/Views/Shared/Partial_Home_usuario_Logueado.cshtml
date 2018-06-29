@@ -1,4 +1,4 @@
-﻿
+﻿@using TPFinalProgWebIII.Models.Enum
 <div class="d-flex flex-row">
     <div class="flex-column col-md-2 carpetas-left">
        
@@ -23,17 +23,22 @@
     <div class="flex-column col-md-10">
       
         <div class="panel panel-default">
-            <div class="panel-heading"><h2>Tareas</h2></div>
+            <div class="panel-heading"><h2>Tareas no terminadas</h2></div>
             <div class="panel-body">
                
                 <table class="table">
 
+                    <tr>
+                        <th><h4>nombre</h4></th>
+                        <th><h4>prioridad</h4></th>
+                        <th><h4>detalle</h4></th>
+                    </tr>
                     @foreach (Tarea x in ViewBag.tareas)
                     {
                         <tr>
                             <td>@x.Nombre</td>
-                            <td>@x.FechaFin</td>
-
+                            <td>@((TipoPrioridad)@x.Prioridad)</td>
+                            <th><div class="p-2 text-center"> <a href="/tareas/detalle/@x.IdTarea"><span class="glyphicon glyphicon-search"></span></a></div></th>
                         </tr>
                     }
 

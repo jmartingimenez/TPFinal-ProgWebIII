@@ -47,15 +47,15 @@ namespace TPFinalProgWebIII.App_Start
               "~/Content/css/Login.css"));
             bundles.Add(new StyleBundle("~/Content/Home").Include(
                "~/Content/css/Home.css"));
-            bundles.Add(new StyleBundle("~/Content/Registro").Include(
-               "~/Content/css/Registro.css"));
+         
             bundles.Add(new StyleBundle("~/Content/HomeLogueado").Include(
                "~/Content/css/HomeLogueado.css"));
 
             
-                   bundles.Add(new StyleBundle("~/Content/TareasIndex").Include(
-               "~/Content/css/TareasIndex.css"));
+                   bundles.Add(new StyleBundle("~/Content/Tareas").Include(
+               "~/Content/css/Tareas.css"));
 
+            
 
             BundleTable.EnableOptimizations = true;
         }
