@@ -29,8 +29,11 @@
 ```
 
 > Los atributos importantes a editar son...
+
 > 'data source' (Instancia de SQL. Ejemplo: 'SQLEXPRESS')
+
 > 'user id' (Usuario de SQL. Ejemplo: 'Sa')
+
 > 'password' (Password de SQL. Ejemplo: '')
 
 # Grupo de trabajo
