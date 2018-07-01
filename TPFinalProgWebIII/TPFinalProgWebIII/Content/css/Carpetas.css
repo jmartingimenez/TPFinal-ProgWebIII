@@ -10,13 +10,13 @@
 .contenedor_carpetas
 {
    width:125px;
-   
+   margin-right:10px;
    display:flex;
    flex-direction:column;
 }
 .carpeta
 {
-    height:120px;
+    width:120px;
     margin:0 auto;
 }
 .contenedor_carpetas>p
@@ -40,7 +40,7 @@
     }
 
 .iconfolder {
-    max-height: 30px;
+    max-width: 30px;
 }
 .titulo
 {

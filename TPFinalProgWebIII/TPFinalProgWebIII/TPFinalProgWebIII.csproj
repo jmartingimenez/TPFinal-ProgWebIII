@@ -153,12 +153,8 @@
     <Content Include="Content\css\HomeLogueado.css" />
     <Content Include="Content\css\Tareas.css" />
     <Content Include="Content\img\campu5.png" />
-    <Content Include="Content\img\CarpetaEjemplo.png" />
-    <Content Include="Content\img\campu2.png" />
     <Content Include="Content\img\folder-add-icon.png" />
-    <Content Include="Content\img\folder-add-icon2.png" />
-    <Content Include="Content\img\folder-add-icon3.png" />
-    <Content Include="Content\img\FolderBlack.png" />
+    <Content Include="Content\img\folder-add-icon76.png" />
     <Content Include="Content\js\jquery.validate.min.js" />
     <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\js\tareaCrear.js" />

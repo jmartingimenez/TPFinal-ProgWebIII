@@ -41,7 +41,7 @@ namespace TPFinalProgWebIII.Controllers
 
                 ViewBag.tareas = usuario.Tarea.OrderByDescending(x => x.FechaCreacion).ToList();
 
-                return View("Index", ViewBag);
+                return View("Index");
             }
             catch (Exception e)
             {

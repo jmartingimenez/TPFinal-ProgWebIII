@@ -77,3 +77,56 @@ div>h2
     max-width:500px;
     margin:auto;
 }
+
+.navbar-inverse
+{
+    background-color:slategrey !important;
+    border:none;
+}
+
+.navbar-toggle:hover
+{
+    background-color:lightsteelblue !important;
+    
+}
+.navbar-toggle:focus
+{
+    background-color:lightsteelblue !important;
+  
+}
+
+.navbar-nav>.open>a:hover
+{
+     background-color:lightsteelblue !important;
+       
+}
+.navbar-nav>.open>a:focus
+{
+     background-color:lightsteelblue !important;
+
+}
+
+li>a
+{
+    color:white !important;
+  
+}
+li>a:hover
+{
+    background-color:lightsteelblue !important;
+}
+
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover
+{
+    background-color:lightsteelblue !important;
+}
+.cerrarSession
+{
+    color:black !important;
+}
+
+.dropdown-menu
+{
+     background-color:slategrey !important;
+}

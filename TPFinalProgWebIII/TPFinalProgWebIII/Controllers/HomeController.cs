@@ -52,7 +52,7 @@ namespace TPFinalProgWebIII.Controllers
                     ViewBag.carpetas = carpetas;
                     ViewBag.tareas = tareas;
 
-                    return View("Index", ViewBag);
+                    return View("Index");
 
                 }
             }

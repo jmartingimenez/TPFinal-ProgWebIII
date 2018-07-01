@@ -38,7 +38,7 @@ namespace TPFinalProgWebIII.Controllers
 
                 ViewBag.carpetas = usuario.Carpeta.OrderBy(x => x.Nombre).ToList();
 
-                return View("Index", ViewBag);
+                return View("Index");
             }
             catch (Exception e)
             {
@@ -103,7 +103,7 @@ namespace TPFinalProgWebIII.Controllers
                 ViewBag.tareas = _generalTareaService.GetAll().Where(x => x.IdCarpeta == id).ToList();
 
               
-                return View("Tareas", ViewBag);
+                return View("Tareas");
             }
             catch (Exception e)
             {
