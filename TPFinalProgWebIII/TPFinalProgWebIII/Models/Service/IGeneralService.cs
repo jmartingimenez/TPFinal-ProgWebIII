@@ -11,8 +11,7 @@ namespace TPFinalProgWebIII.Models.Service
         T Create(T a);
 
         T Update(T a);
-
-        void Delete(T a);
+        
 
         List<T> GetAll();
 

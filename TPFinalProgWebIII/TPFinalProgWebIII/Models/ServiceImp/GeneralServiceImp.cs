@@ -21,10 +21,7 @@ namespace TPFinalProgWebIII.Models.ServiceImp
             return _generalRepository.Create(a);
         }
 
-        public void Delete(T a)
-        {
-            _generalRepository.Delete(a);
-        }
+     
 
         public T Get<TKey>(TKey id)
         {

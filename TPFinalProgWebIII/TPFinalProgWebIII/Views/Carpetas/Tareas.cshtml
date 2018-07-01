@@ -1,28 +1,4 @@
 ﻿
-@*<div class="centrado">
-<div class="panel panel-default">
-    <div class="panel-heading"><h2>Tareas en carpeta: @ViewBag.nombreCarpeta</h2></div>
-    <div class="panel-body">
-        <table class="table table-hover text-center">
-            <thead>
-            <tr>
-                <th><h4>Asunto</h4></th>
-                <th><h4>Descripcion</h4></th>
-                <th><h4>Fecha limite</h4></th>
-            </tr>
-            </thead>
-            @foreach (Tarea x in ViewBag.tareas)
-            {
-                <tr>
-                    <td><div class="p-2"> @x.Nombre </div></td>
-                    <td><div class="p-2"> @x.Descripcion </div></td>
-                    <td><div class="p-2">@x.FechaFin </div></td>
-                </tr>
-
-            }
-        </table>
-</div>
-</div></div>*@
 
 <div><h2>Tareas en carpeta: @ViewBag.nombreCarpeta</h2></div>
 <div class="acomodar centrado">
@@ -59,9 +35,7 @@
                     </div>
                 </div>
             </div>
-            <script>
-             
-                </script>
+        
         }
     
 </div>

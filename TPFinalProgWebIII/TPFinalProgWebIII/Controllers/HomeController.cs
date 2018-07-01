@@ -49,8 +49,31 @@ namespace TPFinalProgWebIII.Controllers
                     List<Carpeta> carpetas = usuario.Carpeta.OrderBy(x => x.Nombre).ToList();
                     List<Tarea> tareas = usuario.Tarea.Where(x=>x.Completada==0).OrderBy(x => x.Prioridad).ThenBy(x => x.FechaFin).ToList();
 
+                    
+                     List<TareaListar> ListaTl = new List<TareaListar>();
+
+                    foreach(Tarea x in tareas)
+                    {
+                        TareaListar Tl = new TareaListar();
+
+                        Tl.IdTarea = x.IdTarea;
+                        Tl.Nombre = x.Nombre;
+                        Tl.Prioridad = x.Prioridad;
+                        Tl.EstimadoHoras = x.EstimadoHoras;
+                        Tl.Completada = x.Completada;
+
+                        foreach(Carpeta y in carpetas)
+                        {
+                            if (y.IdCarpeta == x.IdCarpeta)
+                                Tl.NombreCarpeta = y.Nombre;
+                        }
+
+                        ListaTl.Add(Tl);
+                    }
+
+                   
                     ViewBag.carpetas = carpetas;
-                    ViewBag.tareas = tareas;
+                    ViewBag.tareas = ListaTl;
 
                     return View("Index");
 

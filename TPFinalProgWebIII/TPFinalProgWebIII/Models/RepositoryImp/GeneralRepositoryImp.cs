@@ -21,10 +21,6 @@ namespace TPFinalProgWebIII.Models.RepositoryImp
             return entity;
         }
 
-        public void Delete(T a)
-        {
-            
-        }
 
         //HAY QUE CAMBIAR IMPLEMENTACION ES SOLO UNA PRUEBA
         public T Get<TId>(TId id)

@@ -84,6 +84,7 @@ namespace TPFinalProgWebIII.Controllers
 
                 if (!ModelState.IsValid)
                 {
+
                     return View();
                 }
                 else
@@ -94,7 +95,6 @@ namespace TPFinalProgWebIII.Controllers
                     tarea.IdUsuario = id;
                     tarea.Nombre = tareaval.Nombre;
                     tarea.Descripcion = tareaval.Descripcion;
-                    //FALTARIA VER COMO COMPROBAR SI NO ELEGIO CARPETA
                     tarea.IdCarpeta = tareaval.IdCarpeta;
                     tarea.Prioridad = (short)tareaval.Prioridad;
                     tarea.EstimadoHoras = tareaval.EstimadoHoras;

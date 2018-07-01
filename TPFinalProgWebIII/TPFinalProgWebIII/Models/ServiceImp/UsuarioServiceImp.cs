@@ -105,8 +105,7 @@ namespace TPFinalProgWebIII.Models.ServiceImp
             email.Priority = MailPriority.Normal;
 
             SmtpClient smtp = new SmtpClient();
-            //smtp.Host = "smtp.live.com";
-            //smtp.Port = 25;
+        
 
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;

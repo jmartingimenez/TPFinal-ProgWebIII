@@ -145,8 +145,8 @@
     <Content Include="Content\bootstrap-touchspin-master\Gruntfile.js" />
     <Content Include="Content\bootstrap-touchspin-master\src\jquery.bootstrap-touchspin.css" />
     <Content Include="Content\bootstrap-touchspin-master\src\jquery.bootstrap-touchspin.js" />
-    <Content Include="Content\css\bootstrap.css" />
-    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap\bootstrap.css" />
+    <Content Include="Content\css\bootstrap\bootstrap.min.css" />
     <Content Include="Content\css\Carpetas.css" />
     <Content Include="Content\css\general.css" />
     <Content Include="Content\css\Home.css" />
@@ -155,14 +155,13 @@
     <Content Include="Content\img\campu5.png" />
     <Content Include="Content\img\folder-add-icon.png" />
     <Content Include="Content\img\folder-add-icon76.png" />
-    <Content Include="Content\js\jquery.validate.min.js" />
-    <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Content\js\tareaCrear.js" />
+    <Content Include="Content\js\javascript\jquery.validate.min.js" />
+    <Content Include="Content\js\javascript\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\js\tareaGeneral.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\img\logo2.png" />
     <Content Include="Content\img\logo1.png" />
-    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\javascript\bootstrap.js" />
     <Content Include="Content\bootstrap-touchspin-master\.editorconfig" />
     <Content Include="Content\bootstrap-touchspin-master\.gitignore" />
     <Content Include="Content\bootstrap-touchspin-master\.jshintrc" />
@@ -174,11 +173,11 @@
     <Content Include="Content\bootstrap-touchspin-master\package-lock.json" />
     <Content Include="Content\bootstrap-touchspin-master\package.json" />
     <Content Include="Content\bootstrap-touchspin-master\README.md" />
-    <None Include="Content\js\jquery-1.10.2.intellisense.js" />
-    <Content Include="Content\js\bootstrap.min.js" />
-    <Content Include="Content\js\jquery-1.10.2.js" />
-    <Content Include="Content\js\jquery-1.10.2.min.js" />
-    <Content Include="Content\js\modernizr-2.6.2.js" />
+    <None Include="Content\js\javascript\jquery-1.10.2.intellisense.js" />
+    <Content Include="Content\js\javascript\bootstrap.min.js" />
+    <Content Include="Content\js\javascript\jquery-1.10.2.js" />
+    <Content Include="Content\js\javascript\jquery-1.10.2.min.js" />
+    <Content Include="Content\js\javascript\modernizr-2.6.2.js" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -245,6 +244,7 @@
     <Compile Include="Models\View\CodigoDeActivacion.cs" />
     <Compile Include="Models\View\Login.cs" />
     <Compile Include="Models\View\Registro.cs" />
+    <Compile Include="Models\View\TareaListar.cs" />
     <Compile Include="Models\View\TareaVal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tarea.cs">
@@ -258,19 +258,18 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Base_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\js\jquery-1.10.2.min.map" />
+    <Content Include="Content\js\javascript\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registracion.cshtml" />
     <Content Include="Views\Carpetas\Index.cshtml" />
     <Content Include="Views\Carpetas\Crear.cshtml" />
     <Content Include="Views\Carpetas\Tareas.cshtml" />
-    <Content Include="Views\Home\Logout.cshtml" />
     <Content Include="Views\Tareas\Index.cshtml" />
     <Content Include="Views\Tareas\Crear.cshtml" />
     <Content Include="Views\Tareas\Detalle.cshtml" />
