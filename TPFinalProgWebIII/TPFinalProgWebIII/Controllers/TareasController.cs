@@ -39,7 +39,39 @@ namespace TPFinalProgWebIII.Controllers
                 int.TryParse(Session["IdUsuario"].ToString(), out id);
                 Usuario usuario = _generalUserService.Get(id);
 
-                ViewBag.tareas = usuario.Tarea.OrderByDescending(x => x.FechaCreacion).ToList();
+
+                List<Carpeta> carpetas = usuario.Carpeta.OrderBy(x => x.Nombre).ToList();
+
+                List<Tarea> tareas = usuario.Tarea.OrderByDescending(x => x.FechaCreacion).ToList();
+
+                List<TareaListar> ListaTl = new List<TareaListar>();
+
+                foreach (Tarea x in tareas)
+                {
+                    TareaListar Tl = new TareaListar();
+
+                    Tl.IdCarpeta = x.IdCarpeta;
+                    Tl.IdTarea = x.IdTarea;
+                    Tl.Nombre = x.Nombre;
+                    Tl.Prioridad = x.Prioridad;
+                    Tl.EstimadoHoras = x.EstimadoHoras;
+                    Tl.Completada = x.Completada;
+                    Tl.FechaCreacion = x.FechaCreacion;
+                    Tl.FechaFin = x.FechaFin;
+                    foreach (Carpeta y in carpetas)
+                    {
+                        if (y.IdCarpeta == x.IdCarpeta)
+                            Tl.NombreCarpeta = y.Nombre;
+                    }
+
+                    ListaTl.Add(Tl);
+                }
+
+
+                ViewBag.tareas = ListaTl;
+
+
+
 
                 return View("Index");
             }

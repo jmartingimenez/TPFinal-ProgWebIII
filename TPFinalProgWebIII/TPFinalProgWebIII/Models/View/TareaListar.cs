@@ -15,6 +15,8 @@ namespace TPFinalProgWebIII.Models.View
         public Nullable<decimal> EstimadoHoras { get; set; }
         public short Completada { get; set; }
         public int IdTarea { get; set; }
+        public System.DateTime FechaCreacion { get; set; }
+        public int IdCarpeta { get; set; }
 
     }
 }
