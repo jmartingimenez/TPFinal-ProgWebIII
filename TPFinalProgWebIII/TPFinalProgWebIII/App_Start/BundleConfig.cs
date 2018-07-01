@@ -22,9 +22,6 @@ namespace TPFinalProgWebIII.App_Start
             bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include(
                       "~/Content/css/bootstrap/bootstrap.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/touchspin").Include(
-                      "~/Content/bootstrap-touchspin-master/src/jquery.bootstrap-touchspin.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/tareaGeneral").Include(
                      "~/Content/js/tareaGeneral.js"));
 
