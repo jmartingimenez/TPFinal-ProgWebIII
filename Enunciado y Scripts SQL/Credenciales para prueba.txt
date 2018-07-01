@@ -1,0 +1,2 @@
+Usuario: atareado@test.com/Password: aA123 (Activo)
+Usuario: juancito@test.com/Password: aA123 (Inactivo)
