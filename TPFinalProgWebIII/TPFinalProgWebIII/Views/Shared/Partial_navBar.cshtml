@@ -1,7 +1,6 @@
 ﻿
 <nav class="navbar navbar-inverse ">
    
-        <!-- barra -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -12,7 +11,6 @@
 
 
 
-            <!--quitar el style luego-->
             <a href="/Home/Index"> <img src="~/Content/img/logo2.png" class="img-n" /> </a>
 
         </div>
@@ -25,7 +23,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="/Home/Index">Home </a></li>
                 @{
-                    //valido que no esté vacio para mostrar las carpetas y tareas
+                   
                     if (!Session["Nombre"].Equals(String.Empty))
                     {
                         <li><a href="/Carpetas/Index">Mis Carpetas </a></li>
@@ -40,7 +38,7 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 @{
-                    //valido que esté vacio para mostrar que se loguee o se registre
+                 
                     if (Session["Nombre"].Equals(String.Empty))
                     {
                         <li><a href="/Home/Login">Iniciar Sesion </a></li>
@@ -52,7 +50,7 @@
 
 
                 @{
-                    //valido que no esté vacio  para mostrar el nombre y demas opciones
+                 
                     if (!Session["Nombre"].Equals(String.Empty))
                     {
                         <li class="dropdown">
@@ -70,7 +68,6 @@
 
 
             </ul>
-        </div><!-- /.navbar-collapse -->
-        <!-- /.container-fluid -->
+        </div>
    
 </nav>

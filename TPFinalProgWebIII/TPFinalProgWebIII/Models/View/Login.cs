@@ -11,8 +11,7 @@ namespace TPFinalProgWebIII.Models.View {
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "El email es invalido")]
         public string Email { get; set; }
-
-        //El diagrama de la BDD dice que el máximo es 50, el enunciado que es 20 (?)
+        
         [Required(ErrorMessage = "Debe ingresar una contraseña")]
         [StringLength(20, ErrorMessage = "Ingrese una contraseña mas corta")]
         [DataType(DataType.Password)]

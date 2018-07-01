@@ -21,8 +21,7 @@ namespace TPFinalProgWebIII.Models.RepositoryImp
             return entity;
         }
 
-
-        //HAY QUE CAMBIAR IMPLEMENTACION ES SOLO UNA PRUEBA
+        
         public T Get<TId>(TId id)
         {
             return db.Set<T>().Find(id);
@@ -32,8 +31,7 @@ namespace TPFinalProgWebIII.Models.RepositoryImp
         {
             //CONSIGO LA LISTA DE ENTIDADES A UN FORMA QUE LUEGO PUEDA CASTEAR EN LIST
             IQueryable<T> iq = db.Set<T>();
-
-            //CASTEO A LIST Y DEVUELVO
+            
             return iq.ToList<T>();
         }
 

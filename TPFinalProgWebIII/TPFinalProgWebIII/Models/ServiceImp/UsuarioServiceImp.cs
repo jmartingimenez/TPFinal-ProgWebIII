@@ -17,8 +17,6 @@ namespace TPFinalProgWebIII.Models.ServiceImp
         private readonly IGeneralRepository<Usuario> _generalRepository;
         private readonly IUsuarioRepository _usuarioRepository;
         
-        //para probar el login.
-        public UsuarioServiceImp() { }
 
         public UsuarioServiceImp(IGeneralRepository<Usuario> generalRepository, IUsuarioRepository usuarioRepository)
         {
@@ -80,8 +78,7 @@ namespace TPFinalProgWebIII.Models.ServiceImp
 
             if(usuario.CodigoActivacion == cda.CodigoActivacion)
             {
-                /*Ver si se mejora esto. Lo puse para evitar que puedas activar la cuenta 
-                 aunque ya este activa la misma. */
+            
                 if (usuario.Activo == 1) return usuario;
 
                 usuario.Activo = 1;
@@ -139,7 +136,7 @@ namespace TPFinalProgWebIII.Models.ServiceImp
         public Usuario RegistrarUsuarioConMailSinUso(Registro registro)
         {
             Usuario usuario = _usuarioRepository.FindByEmail(registro.Email);
-            usuario = _generalRepository.Get(usuario.IdUsuario);    //Ver como fixear esto
+            usuario = _generalRepository.Get(usuario.IdUsuario);    
             usuario = BuildUsuario(usuario, registro);
             _generalRepository.Update(usuario);
             SendKeyByMail(usuario);

@@ -50,7 +50,7 @@ else
 
 <div class="panel panel-default">
     @{
-        //No me salió poner el Reverse() sobre el ViewBag. Por eso hago esta línea extra
+   
         HashSet<ComentarioTarea> listaDeComentarios = ViewBag.tarea.ComentarioTarea;
         foreach (ComentarioTarea x in listaDeComentarios.Reverse())
         {   <div class="table-bordered">
@@ -82,7 +82,7 @@ else
 
 <div class="panel panel-default">
     @{
-        //No me salió poner el Reverse() sobre el ViewBag. Por eso hago esta línea extra
+       
         HashSet<ArchivoTarea> listaDeArchivos = ViewBag.tarea.ArchivoTarea;
         foreach (ArchivoTarea x in listaDeArchivos.Reverse())
         {

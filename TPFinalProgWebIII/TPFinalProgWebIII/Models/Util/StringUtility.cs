@@ -5,6 +5,7 @@ using System.Web;
 
 namespace TPFinalProgWebIII.Models.Util {
     public static class StringUtility {
+
         //es un extension method
         public static string Truncar(this string value, int maxLength)
         {

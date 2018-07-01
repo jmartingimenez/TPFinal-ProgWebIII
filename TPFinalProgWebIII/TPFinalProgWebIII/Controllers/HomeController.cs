@@ -267,6 +267,7 @@ namespace TPFinalProgWebIII.Controllers
                 {
                     return View(cda);
                 }
+
                 //activo usuario
                 Usuario user = _usuarioService.ActivateAccount(cda);
 

@@ -31,7 +31,7 @@ namespace TPFinalProgWebIII
                 defaults: new { controller = "Carpetas", action = "Index", id = UrlParameter.Optional }
             );
 
-            //Ruta para el Home, sacar la id luego..
+            //Ruta para el Home
             routes.MapRoute(
                 name: "Home",
                 url: "{controller}/{action}/",

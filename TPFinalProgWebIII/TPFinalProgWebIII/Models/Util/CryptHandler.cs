@@ -4,9 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 
-/*Visto en: stackoverflow.com/questions/9031537/really-simple-encryption-with-c-sharp-and-symmetricalgorithm
- * Para la cookie. El enunciado dice simplemente encriptar la cookie, no habla de algún 
- * algoritmo en particular */
+
 
 namespace TPFinalProgWebIII.Models.Util {
     public static class CryptHandler {

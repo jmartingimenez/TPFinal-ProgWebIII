@@ -9,12 +9,7 @@ namespace TPFinalProgWebIII.Models.Util {
     public class ArchivoUtility {
         public static string pathDestino { get; set; }
 
-        // <summary>
-        /// Guarda la imagen y retorna la ruta relativa donde se guardó.
-        /// </summary>
-        /// <param name="archivoSubido"></param>
-        /// <param name="nombreSignificativo">Puede ser el username en el caso de la imagen de un usuario, puede ser el nombde de una marca, el nombre un producto, dependiendo de con que se relacione la imagen subida</param>
-        /// <returns></returns>
+        
         public static string Guardar(HttpPostedFileBase archivoSubido, string nombreArchivoSubido, int idTarea)
         {            
             //Aclaracion: si queremos agrandar el tamaño máximo de archivo permitido modificar web.config (por defecto es 4MB -> 4096)
